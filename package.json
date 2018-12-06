@@ -10,7 +10,7 @@
     "lint": "eslint ./src/**/*.{js,ts}",
     "lint-fix": "lint --fix",
     "dev": "nodemon src/index.js NODE_ENV=development --exec babel-node",
-    "run": "pm2 start dist/index.js NODE_ENV=production",
+    "run": "cross-env pm2 start dist/index.js NODE_ENV=production",
     "build": "babel src -d dist",
     "test": "node build/run-tests.js",
     "test:unix": "cross-env NODE_ENV=test jest",
