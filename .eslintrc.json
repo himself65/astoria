@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 2017
+  },
+  "extends": [
+    "standard",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    "no-unused-vars": "warn",
+    "no-console": "off"
+  }
+}

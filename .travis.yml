@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+  - "8"
+notifications:
+  email: false
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.12.1
+  - export PATH="$HOME/.yarn/bin:$PATH"
+cache:
+  yarn: true
+  directories:
+    - node_modules
+install:
+  - yarn --frozen-lockfile --non-interactive
+jobs:
+  include:
+    - stage: test
+      name: 'Lint and Test'
+      before_script:
+        - yarn global add codecov
+      script:
+        - yarn run lint
+        - yarn run test:coverage
+      after_success:
+        - codecov
+    - stage: build
+      name: 'Build Test'
+      script:
+        - yarn run build

@@ -1,0 +1,47 @@
+{
+  "name": "astoria",
+  "version": "0.0.1",
+  "description": "backend part of himself65 official website",
+  "main": "src/index.js",
+  "repository": "https://github.com/Himself65/Astoria.git",
+  "author": "himself65",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint ./src/**/*.{js,ts}",
+    "lint-fix": "lint --fix",
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src -d dist",
+    "test": "node build/run-tests.js",
+    "test:unix": "cross-env NODE_ENV=test jest",
+    "test:win32": "cross-env NODE_ENV=test jest -i",
+    "test:coverage": "yarn test --coverage"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/runtime": "^7.2.0",
+    "@types/express": "^4.16.0",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.7"
+  }
+}
