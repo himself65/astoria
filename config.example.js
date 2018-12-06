@@ -1,4 +1,7 @@
+const dev = process.env.NODE_ENV || 'development'
+const port = process.env.PORT || 3000
+
 module.exports = {
   appName: "Himself65",
-  port: 3000
+  port: dev ? port : 80
 }

@@ -1,15 +1,23 @@
 import Koa from 'koa'
+
+// local config
 import config from '../config.example'
 
 const { port } = config
 
-const app = new Koa()
+const app = new Koa()  // Singleton
 
-app.use(async ctx => {
-  ctx.body = 'hello, world'
-})
+const astoria = {
+  async run () {
 
-app.listen(port, () => {
-  console.log('success')
-})
+    app.use(ctx => {
+      ctx.body = 'This project have\'t finished.'
+    })
 
+    app.listen(port, () => {
+      console.log(`Astoria LOADED on port : ${port}`)
+    })
+  }
+}
+
+astoria.run()
