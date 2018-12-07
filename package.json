@@ -10,7 +10,7 @@
     "lint": "eslint ./src/**/*.{js,ts}",
     "lint-fix": "lint --fix",
     "dev": "nodemon src/index.js NODE_ENV=development --exec babel-node",
-    "run": "yarn build && cross-env NODE_PORT=80 pm2 start dist/index.js --env production",
+    "start": "cross-env pm2 start ecosystem.config.js --env production",
     "build": "babel src -d dist",
     "test": "node build/run-tests.js",
     "test:unix": "cross-env NODE_ENV=test jest",
@@ -22,6 +22,7 @@
     "koa-jwt": "^3.5.1",
     "koa-static": "^5.0.0",
     "mysql": "^2.16.0",
+    "pm2": "^3.2.2",
     "sequelize": "^4.41.2"
   },
   "devDependencies": {
@@ -46,8 +47,6 @@
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "^23.6.0",
-    "nodemon": "^1.18.7",
-    "pm2": "^3.2.2"
+    "jest": "^23.6.0"
   }
 }
