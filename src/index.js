@@ -1,6 +1,6 @@
 import Koa from 'koa'
 import server from 'koa-static'
-import historyApiFallback from 'koa2-connect-history-api-fallback'
+// import historyApiFallback from 'koa2-connect-history-api-fallback'
 import path from 'path'
 
 // local config
@@ -15,7 +15,8 @@ const app = new Koa()  // Singleton
 
 const astoria = {
   async run () {
-    app.use(historyApiFallback)
+    // fixme: error handle
+    // app.use(historyApiFallback)
     app.use(server(path.resolve(distPath)))
 
     app.listen(port, () => {
