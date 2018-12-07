@@ -1,5 +1,6 @@
 import Koa from 'koa'
 import server from 'koa-static'
+import fallback from 'koa-history-api-fallback'
 import path from 'path'
 
 // local config
@@ -14,10 +15,8 @@ const app = new Koa()  // Singleton
 
 const astoria = {
   async run () {
+    app.use(fallback)
     app.use(server(path.resolve(distPath)))
-    app.use(ctx => {
-      ctx.body = 'This project have\'t finished.'
-    })
 
     app.listen(port, () => {
       console.log(`Astoria LOADED on port : ${port}`)
