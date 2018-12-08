@@ -6,7 +6,7 @@ const { port, database } = mongodb
 const db_url = `mongodb://localhost:${port}/${database}`
 
 export async function connect_db () {
-  await mongoose.connect(db_url)
+  await mongoose.connect(db_url, { useNewUrlParser: true })
   mongoose.connection.on('connected', () => {
     console.log(`Mongoose connection open to ${db_url}.`)
   })
