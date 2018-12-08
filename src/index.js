@@ -4,6 +4,9 @@ import historyApiFallback from 'koa2-connect-history-api-fallback'
 import 'koa-jwt'
 import path from 'path'
 
+// plugin
+import { connect_db } from './utils/database'
+
 // local config
 import config from '../config.example'
 
@@ -16,11 +19,9 @@ const app = new Koa()  // Singleton
 
 const astoria = {
   async run () {
-    // fixme: error handle
-    app.use(historyApiFallback({
-      whiteList: ['/api']
-    }))
+    app.use(historyApiFallback({ whiteList: ['/api'] }))
     app.use(server(path.resolve(distPath)))
+    await connect_db()
 
     app.listen(port, () => {
       console.log(`Astoria LOADED on port : ${port}`)
