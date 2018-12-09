@@ -1,6 +1,8 @@
 import Koa from 'koa'
 import server from 'koa-static'
 import historyApiFallback from 'koa2-connect-history-api-fallback'
+import logger from 'koa-logger'
+import apiRouter from './router'
 import 'koa-jwt'
 import path from 'path'
 
@@ -21,6 +23,9 @@ const astoria = {
   async run () {
     app.use(historyApiFallback({ whiteList: ['/api'] }))
     app.use(server(path.resolve(distPath)))
+    app.use(logger())
+    app.use(apiRouter.routes())
+    // app.use(errorHandle)   // todo
     await connect_db()
 
     app.listen(port, () => {

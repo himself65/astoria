@@ -20,7 +20,10 @@
   "dependencies": {
     "koa": "^2.6.2",
     "koa-jwt": "^3.5.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
+    "koa-unless": "^1.0.7",
     "koa2-connect-history-api-fallback": "^0.0.6",
     "mongoose": "^5.3.15",
     "pm2": "^3.2.2",
