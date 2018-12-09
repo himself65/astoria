@@ -1,7 +1,7 @@
 import Article from './article'
 
 const controllers = {
-  ...Article
+  Article
 }
 
 export default controllers

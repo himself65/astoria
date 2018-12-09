@@ -1,7 +1,15 @@
 function getArticle (ctx) {
+  ctx.body = 'todo'
+}
 
+function setArticle (ctx) {
+  ctx.body = 'todo'
 }
 
 export default {
-  'article': getArticle
+  name: 'article',
+  method: {
+    'get': getArticle,
+    'put': setArticle
+  }
 }

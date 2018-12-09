@@ -13,7 +13,7 @@ import { connect_db } from './utils/database'
 import config from '../config.example'
 
 const {
-  distPath = 'dist',
+  distPath,
   port
 } = config
 
@@ -25,6 +25,7 @@ const astoria = {
     app.use(server(path.resolve(distPath)))
     app.use(logger())
     app.use(apiRouter.routes())
+      .use(apiRouter.allowedMethods())
     // app.use(errorHandle)   // todo
     await connect_db()
 
