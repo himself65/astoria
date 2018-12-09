@@ -1,7 +1,9 @@
 import Article from './article'
+import Checkin from './checkin'
 
 const controllers = {
-  Article
+  Article,
+  Checkin
 }
 
 export default controllers
