@@ -5,17 +5,19 @@ const { port, database } = mongodb
 
 const db_url = `mongodb://localhost:${port}/${database}`
 
-export async function connect_db () {
-  await mongoose.connect(db_url, { useNewUrlParser: true })
-  mongoose.connection.on('connected', () => {
+export const connect_db = () => {
+  console.log('Try to connect Mongoose.')
+  const db = mongoose.createConnection(db_url, { useNewUrlParser: true })
+  db.on('connected', () => {
     console.log(`Mongoose connection open to ${db_url}.`)
   })
-  mongoose.connection.on('error', (err) => {
+  db.on('error', (err) => {
     console.log('Mongoose connection error: ' + err)
   })
-  mongoose.connection.on('disconnected', () => {
+  db.on('disconnected', () => {
     console.log('Mongoose connection disconnected')
   })
+  return db
 }
 
 export default mongoose

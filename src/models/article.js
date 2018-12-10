@@ -5,7 +5,8 @@ const ObjectId = Schema.ObjectId
 
 // todo
 const Article = new Schema({
-  author: ObjectId,
+  id: ObjectId,
+  author: String,
   title: String,
   body: String,
   date: Date
