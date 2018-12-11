@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint ./src/**/*.{js,ts}",
     "lint-fix": "lint --fix",
-    "dev": "nodemon --exec babel-node src/index.js NODE_ENV=development ",
+    "dev": "nodemon src/index.js NODE_ENV=development ",
     "start": "cross-env pm2 start ecosystem.config.js --env production",
     "build": "babel src -d dist",
     "test": "node build/run-tests.js",

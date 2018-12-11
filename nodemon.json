@@ -1,0 +1,18 @@
+{
+  "verbose": true,
+  "ignore": [
+    "dist",
+    ".git",
+    "node_modules",
+    "public",
+    "test",
+    "coverage",
+    "build"
+  ],
+  "delay": 2000,
+  "watch": [
+    "src"
+  ],
+  "exec": "babel-node",
+  "ext": "js,json"
+}
