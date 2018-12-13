@@ -1,15 +1,11 @@
 import mongoose from '../utils/database'
 
 const Schema = mongoose.Schema
-const ObjectId = Schema.ObjectId
 
-// todo
-const Article = new Schema({
-  id: ObjectId,
-  author: String,
-  title: String,
-  body: String,
-  date: Date
+export const ArticleSchema = new Schema({
+  author: { type: String, required: true },
+  title: { type: String, required: true },
+  content: { type: String, required: true }
 })
 
-export default Article
+export const Article = mongoose.model('Article', ArticleSchema)

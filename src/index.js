@@ -26,8 +26,7 @@ const astoria = {
     app.use(logger())
     app.use(apiRouter.routes())
       .use(apiRouter.allowedMethods())
-    global.app = app
-    global.db = connect_db()
+    await connect_db()
 
     app.listen(port, () => {
       console.log(`Astoria LOADED on port : ${port}`)
