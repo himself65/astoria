@@ -43,3 +43,7 @@ export function handleAPI (fn) {
     }
   }
 }
+
+export function haveAccsess () {
+  // todo
+}
