@@ -12,10 +12,13 @@ import { connectDB } from './utils/database'
 // local config
 import * as config from '../config.json'
 
-const {
+let {
   distPath,
   port
 } = config
+
+// hack
+distPath = process.env.NODE_ENV === 'development' ? './dist/dist' : distPath
 
 const app = new Koa()  // Singleton
 
