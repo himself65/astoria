@@ -13,6 +13,6 @@
   "watch": [
     "src"
   ],
-  "exec": "babel-node",
-  "ext": "js,json"
+  "exec": "ts-node",
+  "ext": "ts,tsx"
 }
