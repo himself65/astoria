@@ -165,6 +165,13 @@
   resolved "https://registry.npmjs.org/@types/koa-compose/-/koa-compose-3.2.2.tgz#dc106e000bbf92a3ac900f756df47344887ee847"
   integrity sha1-3BBuAAu/kqOskA91bfRzRIh+6Ec=
 
+"@types/koa-cors@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.npmjs.org/@types/koa-cors/-/koa-cors-0.0.0.tgz#7a0ef45acfed1ef6c046d5896e3974261d8a9d37"
+  integrity sha512-bqWPbf/MNHx5rwOdQXEkQxL7/DvD1sMQRC+PUDqnYf/i4WPUeLhePRssexznT9uQSNWhtfFi1lDanoY/srFb5g==
+  dependencies:
+    "@types/koa" "*"
+
 "@types/koa-logger@^3.1.1":
   version "3.1.1"
   resolved "https://registry.npmjs.org/@types/koa-logger/-/koa-logger-3.1.1.tgz#bf759ba2f25b7562ffa30b09616bb1c1e5070fea"
@@ -3214,6 +3221,11 @@ koa-convert@^1.2.0:
   dependencies:
     co "^4.6.0"
     koa-compose "^3.0.0"
+
+koa-cors@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.npmjs.org/koa-cors/-/koa-cors-0.0.16.tgz#98107993a7909e34c042986c5ec6156d77f3432e"
+  integrity sha1-mBB5k6eQnjTAQphsXsYVbXfzQy4=
 
 koa-is-json@^1.0.0:
   version "1.0.0"

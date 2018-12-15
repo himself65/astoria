@@ -9,10 +9,17 @@ export default {
   methods: {
     get: handleAPI(async query => {
       const { id } = query
-      return Article.findById(id, (err, docs) => {
-        if (err) console.error(err)
-        return docs
-      })
+      if (!id) {
+        return Article.find((err, docs) => {
+          if (err) throw err
+          return docs
+        })
+      } else {
+        return Article.findById(id, (err, docs) => {
+          if (err) throw err
+          return docs
+        })
+      }
     }),
     post: handleAPI(async query => {
       const { author, title, content } = query
@@ -21,7 +28,7 @@ export default {
         title: title,
         content: content
       }, (err, docs) => {
-        if (err) console.error(err.message)
+        if (err) throw err
         return 'update success.'
       })
     }),
@@ -32,7 +39,7 @@ export default {
         title: title,
         content: content
       }, {}, (err, docs) => {
-        if (err) console.error(err.message)
+        if (err) throw err
         return 'create success'
       })
     })
