@@ -1,6 +1,7 @@
 import * as Koa from 'koa'
 import * as server from 'koa-static'
 import historyApiFallback from './middleware/connect-history-api-fallback'
+import * as cors from 'koa-cors'
 import * as logger from 'koa-logger'
 import apiRouter from './router'
 import 'koa-jwt'
@@ -24,6 +25,7 @@ const app = new Koa()  // Singleton
 
 const astoria = {
   async run () {
+    app.use(cors({ origin: 'localhost:3000' }))
     app.use(historyApiFallback({
       whiteList: ['/api']
     }))
