@@ -20,7 +20,7 @@ async function query (userID) {
 
 export default {
   name: 'checkin',
-  method: {
+  methods: {
     get: handleError(async ctx => {
       const {
         id = undefined

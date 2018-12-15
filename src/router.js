@@ -8,7 +8,7 @@ const { apiUrl } = config
 for (const key in controllers) {
   const controller = controllers[key]
   const name = controller.name
-  const methods = controller.method
+  const methods = controller.methods
   for (const methodName in methods) {
     if (methods[methodName] === null || methods[methodName] === undefined) {
       console.error(`Got a nullable method on ${controller.name}.`)

@@ -2,7 +2,7 @@ import { handleAPI } from "../utils"
 
 const login = {
   name: 'login',
-  method: {
+  methods: {
     post: handleAPI(async () => {
       // todo
     })
@@ -11,7 +11,7 @@ const login = {
 
 const logout = {
   name: 'logout',
-  method: {
+  methods: {
     post: handleAPI(async () => {
       // todo
     })

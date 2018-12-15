@@ -6,7 +6,7 @@ const name = 'article'
 // fixme: refac this handle
 export default {
   name: name,
-  method: {
+  methods: {
     get: handleAPI(async query => {
       const { id } = query
       await Article.findById(id, (err, docs) => {
