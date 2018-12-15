@@ -18,7 +18,7 @@ let {
 } = config
 
 // hack
-distPath = process.env.NODE_ENV === 'development' ? './dist/dist' : distPath
+distPath = process.env.NODE_ENV === 'development' ? '../dist' : distPath
 
 const app = new Koa()  // Singleton
 

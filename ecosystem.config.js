@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'astoria',
-    script: 'dist/index.js',
+    script: 'dist/src/index.js',
 
     args: '',
     instances: 1,
