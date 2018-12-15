@@ -2,7 +2,7 @@ import * as url from 'url'
 import { Context } from 'koa'
 
 interface Rewrites {
-  from: string,
+  from: string
   to: string
 }
 
