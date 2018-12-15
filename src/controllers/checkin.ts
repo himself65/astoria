@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { handleError } from "../utils"
-import config from '../../config.example'
+import { Context } from 'koa'
+import { handleError } from '../utils'
+import * as config from '../../config.json'
 
 const {
   plugins: {
@@ -11,7 +12,7 @@ const {
   }
 } = config
 
-async function query (userID) {
+async function query (userID: string) {
   const url = userID === undefined ? getGroupsUrl : `${getUserUrl}/${userID}`
   return axios.get(url).then(res => {
     return res.data
@@ -21,7 +22,7 @@ async function query (userID) {
 export default {
   name: 'checkin',
   methods: {
-    get: handleError(async ctx => {
+    get: handleError(async (ctx: Context) => {
       const {
         id = undefined
       } = ctx.request.query

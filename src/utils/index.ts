@@ -1,4 +1,4 @@
-export function handleError (fn) {
+export function handleError (fn: Function): Function {
   return async (ctx) => {
     try {
       await fn(ctx)
@@ -15,7 +15,7 @@ export function handleError (fn) {
   }
 }
 
-export function handleAPI (fn) {
+export function handleAPI (fn: Function) {
   return async (ctx) => {
     const query = ctx.request.query
     const response = ctx.response

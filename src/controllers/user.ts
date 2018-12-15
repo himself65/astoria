@@ -1,10 +1,11 @@
-import { handleAPI } from "../utils"
+import { handleAPI } from '../utils'
 
 const login = {
   name: 'login',
   methods: {
-    post: handleAPI(async () => {
+    post: handleAPI(async (query) => {
       // todo
+      const { username, password } = query
     })
   }
 }

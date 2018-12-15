@@ -1,6 +1,6 @@
-import Router from 'koa-router'
-import controllers from './controllers'
-import config from '../config.example'
+import * as Router from 'koa-router'
+import * as controllers from './controllers'
+import * as config from '../config.json'
 
 const router = new Router()
 const { apiUrl } = config

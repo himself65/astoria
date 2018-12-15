@@ -9,14 +9,14 @@ export default {
   methods: {
     get: handleAPI(async query => {
       const { id } = query
-      await Article.findById(id, (err, docs) => {
+      return Article.findById(id, (err, docs) => {
         if (err) console.error(err)
         return docs
       })
     }),
     post: handleAPI(async query => {
       const { author, title, content } = query
-      await Article.create({
+      return Article.create({
         author: author,
         title: title,
         content: content
@@ -27,7 +27,7 @@ export default {
     }),
     put: handleAPI(async query => {
       const { id, author, title, content } = query
-      await Article.findByIdAndUpdate(id, {
+      return Article.findByIdAndUpdate(id, {
         author: author,
         title: title,
         content: content

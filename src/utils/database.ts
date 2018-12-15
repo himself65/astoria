@@ -1,16 +1,16 @@
-import mongoose from 'mongoose'
-import { mongodb } from '../../config.example'
+import * as mongoose from 'mongoose'
+import { mongodb } from '../../config.json'
 
 const { port, database } = mongodb
 
-const db_url = `mongodb://localhost:${port}/${database}`
+const dbUrl = `mongodb://localhost:${port}/${database}`
 
-export const connect_db = async () => {
+export const connectDB = async () => {
   console.log('Try to connect Mongoose.')
-  await mongoose.connect(db_url, { useNewUrlParser: true })
+  await mongoose.connect(dbUrl, { useNewUrlParser: true })
   const db = mongoose.connection
   db.on('connected', () => {
-    console.log(`Mongoose connection open to ${db_url}.`)
+    console.log(`Mongoose connection open to ${dbUrl}.`)
 
   })
   db.on('error', (err) => {

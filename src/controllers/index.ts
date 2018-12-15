@@ -5,11 +5,9 @@ import {
   login as Login
 } from './user'
 
-const controllers = {
+export {
   Article,
   Checkin,
   Logout,
   Login
 }
-
-export default controllers

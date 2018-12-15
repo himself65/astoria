@@ -1,7 +1,7 @@
 {
   "root": true,
   "parserOptions": {
-    "parser": "babel-eslint",
+    "parser": "typescript-eslint-parser",
     "ecmaVersion": 2018
   },
   "extends": [
@@ -19,5 +19,12 @@
     "no-unused-vars": "warn",
     "no-console": "off",
     "no-undef": "warn"
+  },
+  "globals": {
+    "expect": true,
+    "describe": true,
+    "it": true,
+    "jest": true,
+    "process": true
   }
 }
