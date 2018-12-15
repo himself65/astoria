@@ -1,6 +1,5 @@
 import * as url from 'url'
 import { Context } from 'koa'
-import { log } from 'util'
 
 interface Rewrites {
   from: string,
