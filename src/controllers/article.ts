@@ -3,7 +3,6 @@ import { JsonController, Get, Post, Param, Body, Put, QueryParams } from 'routin
 
 @JsonController()
 export class ArticleController {
-  private name = 'article'
 
   @Get('/articles')
   getAll () {

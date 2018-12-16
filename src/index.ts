@@ -9,6 +9,7 @@ import * as path from 'path'
 
 // controller
 import { ArticleController } from './controllers/article'
+import { CheckinController } from './controllers/checkin'
 
 // plugin
 import { connectDB } from './utils/database'
@@ -30,7 +31,7 @@ const astoria = {
   async run () {
     useKoaServer(app, {
       routePrefix: '/api',
-      controllers: [ArticleController]
+      controllers: [ArticleController, CheckinController]
     })
     app.use(cors({ origin: 'localhost:3000' }))
     app.use(historyApiFallback({
