@@ -1,47 +1,45 @@
 import { Article } from '../models/article'
-import { handleAPI } from '../utils'
+import { JsonController, Get, Post, Param, Body, Put } from 'routing-controllers'
 
-const name = 'article'
+@JsonController()
+export class ArticleController {
+  private name = 'article'
 
-// fixme: refac this handle
-export default {
-  name: name,
-  methods: {
-    get: handleAPI(async query => {
-      const { id } = query
-      if (!id) {
-        return Article.find((err, docs) => {
-          if (err) throw err
-          return docs
-        })
-      } else {
-        return Article.findById(id, (err, docs) => {
-          if (err) throw err
-          return docs
-        })
+  @Get('/articles')
+  async getAll () {
+    return Article.find((err, docs) => {
+      if (err) throw err
+      return docs
+    })
+  }
+
+  @Get('/articles/:id')
+  async getOne (@Param('id') id: number) {
+    return Article.find(id, (err, docs) => {
+      if (err) throw err
+      return docs
+    })
+  }
+
+  @Post('/articles')
+  async Post (@Body() article: JSON) {
+    return Article.create(article, (err, docs) => {
+      if (err) throw err
+      return {
+        ...docs,
+        message: 'create success.'
       }
-    }),
-    post: handleAPI(async query => {
-      const { author, title, content } = query
-      return Article.create({
-        author: author,
-        title: title,
-        content: content
-      }, (err, docs) => {
-        if (err) throw err
-        return 'update success.'
-      })
-    }),
-    put: handleAPI(async query => {
-      const { id, author, title, content } = query
-      return Article.findByIdAndUpdate(id, {
-        author: author,
-        title: title,
-        content: content
-      }, {}, (err, docs) => {
-        if (err) throw err
-        return 'create success'
-      })
+    })
+  }
+
+  @Put('/articles/:id')
+  async EditOne (@Param('id') id: number, @Body() article: JSON) {
+    return Article.findByIdAndUpdate(id, {}, {}, (err, docs) => {
+      if (err) throw err
+      return {
+        ...docs,
+        message: 'edit success.'
+      }
     })
   }
 }
