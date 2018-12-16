@@ -1,28 +1,22 @@
 import { Article } from '../models/article'
-import { JsonController, Get, Post, Param, Body, Put } from 'routing-controllers'
+import { JsonController, Get, Post, Param, Body, Put, QueryParams } from 'routing-controllers'
 
 @JsonController()
 export class ArticleController {
   private name = 'article'
 
   @Get('/articles')
-  async getAll () {
-    return Article.find((err, docs) => {
-      if (err) throw err
-      return docs
-    })
+  getAll () {
+    return Article.find().select('author title content').lean(true)
   }
 
   @Get('/articles/:id')
-  async getOne (@Param('id') id: number) {
-    return Article.find(id, (err, docs) => {
-      if (err) throw err
-      return docs
-    })
+  getOne (@Param('id') id: number) {
+    return Article.findById(id).select('author title content').lean(true)
   }
 
   @Post('/articles')
-  async Post (@Body() article: JSON) {
+  Post (@Body() article: JSON) {
     return Article.create(article, (err, docs) => {
       if (err) throw err
       return {
@@ -33,8 +27,13 @@ export class ArticleController {
   }
 
   @Put('/articles/:id')
-  async EditOne (@Param('id') id: number, @Body() article: JSON) {
-    return Article.findByIdAndUpdate(id, {}, {}, (err, docs) => {
+  EditOne (@Param('id') id: number, @QueryParams() article) {
+    const { author, title, content } = article
+    return Article.findByIdAndUpdate(id, {
+      author: author,
+      title: title,
+      content: content
+    }, {}, (err, docs) => {
       if (err) throw err
       return {
         ...docs,
