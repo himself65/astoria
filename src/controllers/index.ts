@@ -1,14 +1,4 @@
-// import Article from './article'
-// import Checkin from './checkin'
-// FIXME
-import {
-  logout as Logout,
-  login as Login
-} from './user'
+import { ArticleController } from './article'
+import { CheckinController } from './checkin'
 
-export {
-  // Article,
-  // Checkin,
-  Logout,
-  Login
-}
+export const Controllers = [ArticleController, CheckinController]
