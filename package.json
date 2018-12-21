@@ -19,10 +19,10 @@
     "test:coverage": "yarn test --coverage"
   },
   "dependencies": {
+    "@koa/cors": "2",
     "axios": "^0.18.0",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
-    "koa-cors": "^0.0.16",
     "koa-jwt": "^3.5.1",
     "koa-logger": "^3.2.0",
     "koa-multer": "^1.0.2",
@@ -43,7 +43,6 @@
     "@types/jest": "^23.3.10",
     "@types/koa": "^2.0.47",
     "@types/koa-bodyparser": "^4.2.1",
-    "@types/koa-cors": "^0.0.0",
     "@types/koa-logger": "^3.1.1",
     "@types/koa-router": "^7.0.35",
     "@types/koa-static": "^4.0.0",

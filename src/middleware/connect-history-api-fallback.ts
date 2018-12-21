@@ -16,7 +16,7 @@ interface Options {
   disableDotRule?: boolean
 }
 
-export default function logger (options?: Options): Middleware {
+export default function historyApiFallback (options?: Options): Middleware {
   const logger = getLogger(options)
 
   return async (ctx: Context, next: Function) => {

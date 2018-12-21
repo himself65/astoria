@@ -18,6 +18,13 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@koa/cors@2":
+  version "2.2.3"
+  resolved "http://registry.npm.taobao.org/@koa/cors/download/@koa/cors-2.2.3.tgz#c32a9907acbee1e72fedfb0b9ac840d2e6f9be57"
+  integrity sha1-wyqZB6y+4ecv7fsLmshA0ub5vlc=
+  dependencies:
+    vary "^1.1.2"
+
 "@pm2/agent-node@^1.0.9":
   version "1.0.12"
   resolved "https://registry.npmjs.org/@pm2/agent-node/-/agent-node-1.0.12.tgz#cbe2c96511f241a81c5ba8e17e0e7bcc08535363"
@@ -164,13 +171,6 @@
   version "3.2.2"
   resolved "https://registry.npmjs.org/@types/koa-compose/-/koa-compose-3.2.2.tgz#dc106e000bbf92a3ac900f756df47344887ee847"
   integrity sha1-3BBuAAu/kqOskA91bfRzRIh+6Ec=
-
-"@types/koa-cors@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.npmjs.org/@types/koa-cors/-/koa-cors-0.0.0.tgz#7a0ef45acfed1ef6c046d5896e3974261d8a9d37"
-  integrity sha512-bqWPbf/MNHx5rwOdQXEkQxL7/DvD1sMQRC+PUDqnYf/i4WPUeLhePRssexznT9uQSNWhtfFi1lDanoY/srFb5g==
-  dependencies:
-    "@types/koa" "*"
 
 "@types/koa-logger@^3.1.1":
   version "3.1.1"
@@ -3238,11 +3238,6 @@ koa-convert@^1.2.0:
   dependencies:
     co "^4.6.0"
     koa-compose "^3.0.0"
-
-koa-cors@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.npmjs.org/koa-cors/-/koa-cors-0.0.16.tgz#98107993a7909e34c042986c5ec6156d77f3432e"
-  integrity sha1-mBB5k6eQnjTAQphsXsYVbXfzQy4=
 
 koa-is-json@^1.0.0:
   version "1.0.0"
