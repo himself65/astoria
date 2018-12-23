@@ -1,7 +1,6 @@
 import 'reflect-metadata'
 import * as Koa from 'koa'
 import * as server from 'koa-static'
-import historyApiFallback from './middleware/connect-history-api-fallback'
 import * as cors from '@koa/cors'
 import * as logger from 'koa-logger'
 import { useKoaServer } from 'routing-controllers'
@@ -15,6 +14,8 @@ import { connectDB } from './utils/database'
 
 // local config
 import * as config from '../config.json'
+import historyApiFallback from './middleware/connect-history-api-fallback'
+import requestQuery from './middleware/requestQuery'
 
 const {
   distPath,
@@ -37,6 +38,7 @@ const astoria = {
       controllers: Controllers
     })
     console.log('/api views register success!')
+    app.use(requestQuery())
     app.use(cors({ origin: `localhost:${port}` }))
     app.use(historyApiFallback({
       whiteList: ['/api']
