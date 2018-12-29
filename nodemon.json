@@ -9,7 +9,6 @@
     "coverage",
     "build"
   ],
-  "delay": 2000,
   "watch": [
     "src"
   ],

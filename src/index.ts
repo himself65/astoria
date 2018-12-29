@@ -7,7 +7,8 @@ import { useKoaServer } from 'routing-controllers'
 import * as path from 'path'
 
 // controllers
-import { Controllers } from './controllers'
+import { APIControllers } from './controllers'
+import router from './router'
 
 // plugin
 import { connectDB } from './utils/database'
@@ -36,7 +37,7 @@ const astoria = {
     app.use(requestQuery())
     useKoaServer(app, {
       routePrefix: '/api',
-      controllers: Controllers
+      controllers: APIControllers
     })
     console.log('/api views register success!')
     app.use(cors({ origin: `localhost:${port}` }))

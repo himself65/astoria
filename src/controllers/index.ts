@@ -1,5 +1,6 @@
 import { ArticleController } from './article'
 import { CheckinController } from './checkin'
 import { PostsController } from './posts'
+import { LuoguController } from './luogu'
 
-export const Controllers = [ArticleController, CheckinController, PostsController]
+export const APIControllers = [CheckinController, LuoguController]
