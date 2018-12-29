@@ -1,5 +1,5 @@
 import * as url from 'url'
-import { Context } from 'koa'
+import { Context, Middleware } from 'koa'
 
 interface Rewrites {
   from: string
@@ -16,7 +16,7 @@ interface Options {
   disableDotRule?: boolean
 }
 
-export default function logger (options?: Options) {
+export default function historyApiFallback (options?: Options): Middleware {
   const logger = getLogger(options)
 
   return async (ctx: Context, next: Function) => {
@@ -66,7 +66,7 @@ export default function logger (options?: Options) {
     rewriteTarget = options.index || '/index.html'
     logger('Rewriting', ctx.method, ctx.url, 'to', rewriteTarget)
     ctx.url = rewriteTarget
-    await next()
+    return next()
   }
 }
 

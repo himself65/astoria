@@ -1,13 +1,5 @@
-import Article from './article'
-import Checkin from './checkin'
-import {
-  logout as Logout,
-  login as Login
-} from './user'
+import { ArticleController } from './article'
+import { CheckinController } from './checkin'
+import { PostsController } from './posts'
 
-export {
-  Article,
-  Checkin,
-  Logout,
-  Login
-}
+export const Controllers = [ArticleController, CheckinController, PostsController]

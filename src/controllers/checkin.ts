@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { Context } from 'koa'
-import { handleError } from '../utils'
 import * as config from '../../config.json'
+import { JsonController, Get, Param } from 'routing-controllers'
 
 const {
   plugins: {
@@ -12,26 +11,23 @@ const {
   }
 } = config
 
-async function query (userID: string) {
+export async function query (userID?: number | string) {
   const url = userID === undefined ? getGroupsUrl : `${getUserUrl}/${userID}`
   return axios.get(url).then(res => {
     return res.data
   })
 }
 
-export default {
-  name: 'checkin',
-  methods: {
-    get: handleError(async (ctx: Context) => {
-      const {
-        id = undefined
-      } = ctx.request.query
-      try {
-        ctx.response.body = await query(id)
-      } catch (err) {
-        console.error(err)
-        throw ctx
-      }
-    })
+@JsonController()
+export class CheckinController {
+
+  @Get('/checkin/:id')
+  async getByID (@Param('id') id: number) {
+    return query(id)
+  }
+
+  @Get('/checkin')
+  getAll () {
+    return query()
   }
 }

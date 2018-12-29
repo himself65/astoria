@@ -3,12 +3,16 @@
     "module": "commonjs",
     "target": "es6",
     "lib": [
-      "es2015"
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018"
     ],
     "noImplicitAny": false,
     "outDir": "./dist",
     "sourceMap": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "experimentalDecorators": true
   },
   "include": [
     "./src/**/*"
