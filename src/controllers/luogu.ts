@@ -7,14 +7,26 @@ interface ILuoguID {
   username: string,
   password: string,
   cookie: 3,
-  verify: string
+  verify: string,
+  __client_id: string,
+  _uid: number
 }
 
 @Controller()
 export class LuoguController {
   @Post('/luogu/login')
   async loginLuogu (@QueryParams() params: ILuoguID) {
-    return axios.post('https://www.luogu.org/login/loginpage', params).then(res => {
+    const query = {
+      username: params.username,
+      password: params.password,
+      cookie: 3,
+      verify: params.verify
+    }
+    return axios.post('https://www.luogu.org/login/loginpage', query, {
+      headers: {
+        Cookie: '__client_id=' + params.__client_id + ';_uid=' + params._uid
+      }
+    }).then(res => {
       return res.data
     })
   }
