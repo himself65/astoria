@@ -33,12 +33,12 @@ const astoria = {
     console.log(`${isProd ? '生产' : '开发'}版本加载中...`)
     console.log(`静态文件根目录：${staticPath}`)
     // Load middleware
+    app.use(requestQuery())
     useKoaServer(app, {
       routePrefix: '/api',
       controllers: Controllers
     })
     console.log('/api views register success!')
-    app.use(requestQuery())
     app.use(cors({ origin: `localhost:${port}` }))
     app.use(historyApiFallback({
       whiteList: ['/api']
@@ -46,7 +46,6 @@ const astoria = {
     app.use(server(path.resolve(staticPath), { defer: true }))  // waiting after others loaded
     app.use(logger())
     await connectDB()
-
     app.listen(port, () => {
       console.log(`Astoria LOADED on port : ${port}`)
     })

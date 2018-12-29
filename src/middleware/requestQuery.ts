@@ -1,11 +1,11 @@
 import { Context } from 'koa'
 import { apiUrl, appName } from '../../config.json'
 
-export default function requestQuery () {
+export default function requestQuery (conf = {}) {
   return async (ctx: Context, next: Function) => {
-    await next()
-    if (ctx.is(`X-${appName}-Type`, 'content-only') && !ctx.originalUrl.startsWith(apiUrl)) {
-      ctx.originalUrl = `/api${ctx.originalUrl}`
+    if (ctx.headers[`x-${appName}-type`] === 'content-only' && !ctx.url.startsWith(apiUrl)) {
+      ctx.url = `/api${ctx.url}`
     }
+    return next()
   }
 }
