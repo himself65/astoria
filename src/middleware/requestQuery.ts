@@ -1,14 +1,11 @@
-import axios from 'axios'
 import { Context } from 'koa'
-import { appName, apiUrl } from '../../config.json'
+import { apiUrl, appName } from '../../config.json'
 
 export default function requestQuery () {
   return async (ctx: Context, next: Function) => {
     await next()
-    if (ctx.is(`X-${appName}-Type`, 'json-only') && !ctx.originalUrl.startsWith(apiUrl)) {
-      const fixedJsonUrl = `/api${ctx.originalUrl}`
-      const data = await axios.get(fixedJsonUrl, ctx.request.query)
-      ctx.body = data
+    if (ctx.is(`X-${appName}-Type`, 'content-only') && !ctx.originalUrl.startsWith(apiUrl)) {
+      ctx.originalUrl = `/api${ctx.originalUrl}`
     }
   }
 }
