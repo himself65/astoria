@@ -30,4 +30,20 @@ export class LuoguController {
       return res.data
     })
   }
+
+  @Get('/luogu/captcha')
+  async getCaptcha () {
+    return axios.get('https://www.luogu.org/download/captcha').then(res => {
+      const cookies = res.headers['set-cookie']
+      let regex = /^__client_id=(\S*);/g
+      const _0 = regex.exec(cookies[0])[1]
+      regex = /^_uid=(\S*);/g
+      const _1 = regex.exec(cookies[1])[1]
+      return {
+        '__client_id': _0,
+        '_uid': _1,
+        img: res.data
+      }
+    })
+  }
 }
