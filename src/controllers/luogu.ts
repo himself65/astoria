@@ -14,12 +14,7 @@ interface ILuoguID {
 export class LuoguController {
   @Post('/luogu/login')
   async loginLuogu (@QueryParams() params: ILuoguID) {
-    const formData = new FormData()
-    forEach(params, (k, v) => {
-      formData.append(k, v)
-    })
-    // @ts-ignore
-    return axios.post('https://www.luogu.org/login/loginpage', formData).then(res => {
+    return axios.post('https://www.luogu.org/login/loginpage', params).then(res => {
       return res.data
     })
   }
