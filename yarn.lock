@@ -239,10 +239,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-10.12.12.tgz#e15a9d034d9210f00320ef718a50c4a799417c47"
   integrity sha512-Pr+6JRiKkfsFvmU/LK68oBRCQeEg36TyAbPhc2xpez24OOZZCuoIhWGTd39VZy6nGafSbxzGouFPTFD/rR1A0A==
 
-"@types/node@^10.12.15":
-  version "10.12.15"
-  resolved "https://registry.npmjs.org/@types/node/-/node-10.12.15.tgz#20e85651b62fd86656e57c9c9bc771ab1570bc59"
-  integrity sha512-9kROxduaN98QghwwHmxXO2Xz3MaWf+I1sLVAA6KJDF5xix+IyXVhds0MAfdNwtcpSrzhaTsNB0/jnL86fgUhqA==
+"@types/node@^10.12.18":
+  version "10.12.18"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
+  integrity sha1-HTynZHGJFVhPzZ9jRGIbdnJmXGc=
 
 "@types/range-parser@*":
   version "1.2.2"
@@ -3292,15 +3292,14 @@ koa-send@^5.0.0:
     mz "^2.7.0"
     resolve-path "^1.4.0"
 
-koa-session@^5.10.0:
-  version "5.10.0"
-  resolved "https://registry.npmjs.org/koa-session/-/koa-session-5.10.0.tgz#223a1d0d16fc4315c48fda7cdd08113b0c7a6518"
-  integrity sha512-eolkZ2Yw2nPX4fjvDANKdBornp60zcaX0xayA3mfeyyGTSY+MQ5t7vdI5HAdOSwLtF/lXoeEzUeXilVrkVsSdA==
+koa-session@^5.10.1:
+  version "5.10.1"
+  resolved "http://registry.npm.taobao.org/koa-session/download/koa-session-5.10.1.tgz#5246e71eb87a6efd38c008f2dcb74dc00bb6e7a0"
+  integrity sha1-UkbnHrh6bv04wAjy3LdNwAu256A=
   dependencies:
     crc "^3.4.4"
     debug "^3.1.0"
     is-type-of "^1.0.0"
-    pedding "^1.1.0"
     uid-safe "^2.1.3"
 
 koa-static@^5.0.0:
@@ -3316,10 +3315,10 @@ koa-unless@1.0.7, koa-unless@^1.0.7:
   resolved "https://registry.npmjs.org/koa-unless/-/koa-unless-1.0.7.tgz#b9df375e2b4da3043918d48622520c2c0b79f032"
   integrity sha1-ud83XitNowQ5GNSGIlIMLAt58DI=
 
-koa2-connect-history-api-fallback@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/koa2-connect-history-api-fallback/-/koa2-connect-history-api-fallback-0.0.6.tgz#671bd0166497e79981313a70a17fbb539093b757"
-  integrity sha512-efRrC8jUzd6HP+cjv5gKIXuKi8KoCUgPjr2RrDUkEAaj0C8kQo6N9KBiVh5MNfDK9G1i3hN18Fm2O8avyeXX1w==
+koa2-connect-history-api-fallback@^0.1.0:
+  version "0.1.0"
+  resolved "http://registry.npm.taobao.org/koa2-connect-history-api-fallback/download/koa2-connect-history-api-fallback-0.1.0.tgz#fcdf9cdcfa0bad64761300fa0f1be20dce3af249"
+  integrity sha1-/N+c3PoLrWR2EwD6DxviDc468kk=
 
 koa@^2.6.2:
   version "2.6.2"
@@ -3725,10 +3724,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.npmjs.org/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.3.15:
-  version "5.3.15"
-  resolved "https://registry.npmjs.org/mongoose/-/mongoose-5.3.15.tgz#11a803a4ae640b0cce29a2579282ac9dd005c47a"
-  integrity sha512-51PchMQn2kFZYPSe0vfr8RcJxm6g7RokfcVl2xVORogtT5GUKu6RgnRXsUV7v9vZ+b3Wh//ph53kuIyhtXi56g==
+mongoose@^5.4.1:
+  version "5.4.1"
+  resolved "http://registry.npm.taobao.org/mongoose/download/mongoose-5.4.1.tgz#0e1535bb2653426c9ee8fffbf4fa0ba57bb196e7"
+  integrity sha1-DhU1uyZTQmye6P/79PoLpXuxluc=
   dependencies:
     async "2.6.1"
     bson "~1.1.0"
@@ -3880,16 +3879,16 @@ node-pre-gyp@^0.10.0:
     semver "^5.3.0"
     tar "^4"
 
-nodemon@^1.18.8:
-  version "1.18.8"
-  resolved "https://registry.npmjs.org/nodemon/-/nodemon-1.18.8.tgz#eb4c0052dc81395bdc503f3c8ae3cba86ca7146a"
-  integrity sha512-CgC/JdCf+CT7Z+K6wWaV30t8GU1DPtXpr/6PuXC1/LboXCmUQNKOaz0AEMjoWDTt2AdHOBFxgv41dyC0i79SbA==
+nodemon@^1.18.9:
+  version "1.18.9"
+  resolved "http://registry.npm.taobao.org/nodemon/download/nodemon-1.18.9.tgz#90b467efd3b3c81b9453380aeb2a2cba535d0ead"
+  integrity sha1-kLRn79OzyBuUUzgK6yosulNdDq0=
   dependencies:
     chokidar "^2.0.4"
     debug "^3.1.0"
     ignore-by-default "^1.0.1"
     minimatch "^3.0.4"
-    pstree.remy "^1.1.3"
+    pstree.remy "^1.1.6"
     semver "^5.5.0"
     supports-color "^5.2.0"
     touch "^3.1.0"
@@ -4269,11 +4268,6 @@ path-type@^1.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-pedding@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/pedding/-/pedding-1.1.0.tgz#f7b138c288d4bd584eada1215f5bd924f1e1e667"
-  integrity sha1-97E4wojUvVhOraEhX1vZJPHh5mc=
-
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
@@ -4347,10 +4341,10 @@ pm2-multimeter@^0.1.2:
   dependencies:
     charm "~0.1.1"
 
-pm2@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.npmjs.org/pm2/-/pm2-3.2.3.tgz#af3f3e92ec9f986e31dcbfe9b36815a0054f4fbf"
-  integrity sha512-rBJgMf3XB5/qDvIyNc5Uo3YHqiM6c+nHpgPm10dq17CEf08z4XvNI9ucwzHNMg4S3lW07hww65IRPaXfEckS7A==
+pm2@^3.2.4:
+  version "3.2.4"
+  resolved "http://registry.npm.taobao.org/pm2/download/pm2-3.2.4.tgz#fb9c0ed402e04ce8f6d6e1ae935a765aa0e95c89"
+  integrity sha1-+5wO1ALgTOj21uGuk1p2WqDpXIk=
   dependencies:
     "@pm2/agent" "^0.5.11"
     "@pm2/io" "~2.4.2"
@@ -4473,10 +4467,10 @@ psl@^1.1.24, psl@^1.1.28:
   resolved "https://registry.npmjs.org/psl/-/psl-1.1.29.tgz#60f580d360170bb722a797cc704411e6da850c67"
   integrity sha512-AeUmQ0oLN02flVHXWh9sSJF7mcdFq0ppid/JkErufc3hGIV/AMa8Fo9VgDo/cT2jFdOWoFvHp90qqBH54W+gjQ==
 
-pstree.remy@^1.1.3:
-  version "1.1.4"
-  resolved "https://registry.npmjs.org/pstree.remy/-/pstree.remy-1.1.4.tgz#a03d5dbc06ba639fb6dd4874644c4bad9882ec21"
-  integrity sha512-3kSyTN/iTJMxtL87idnFgTyOp2vQ6B/49QcHUO26kh2M2qahlUivFI1zWJ9FRFPoB+KgcP820JMOuIhkBJAP3Q==
+pstree.remy@^1.1.6:
+  version "1.1.6"
+  resolved "http://registry.npm.taobao.org/pstree.remy/download/pstree.remy-1.1.6.tgz#73a55aad9e2d95814927131fbf4dc1b62d259f47"
+  integrity sha1-c6VarZ4tlYFJJxMfv03Bti0ln0c=
 
 punycode@1.3.2:
   version "1.3.2"
@@ -4880,10 +4874,10 @@ semver@5.5.0:
   resolved "https://registry.npmjs.org/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
   integrity sha512-4SJ3dm0WAwWy/NVeioZh5AntkdJoWKxHxcmyP622fOkgHa4z3R0TdBJICINyaSDE6uNwVc8gZr+ZinwZAH4xIA==
 
-sequelize@^4.41.2:
-  version "4.41.2"
-  resolved "https://registry.npmjs.org/sequelize/-/sequelize-4.41.2.tgz#bb9ba30d72e9eeb883c9861cd0e2cac672010883"
-  integrity sha512-8vPf2R0o9iEmtzkqNzwFdblO+0Mu+RNxOdLeYGGqWGlp3cushLpQucAeSGPQgf2hQVZP5yOCM1ouZKTQ5FTlvA==
+sequelize@^4.42.0:
+  version "4.42.0"
+  resolved "http://registry.npm.taobao.org/sequelize/download/sequelize-4.42.0.tgz#439467ba7bfe7d5afcc56d62b3e091860fbf18f3"
+  integrity sha1-Q5Rnunv+fVr8xW1is+CRhg+/GPM=
   dependencies:
     bluebird "^3.5.0"
     cls-bluebird "^2.1.0"
@@ -5466,10 +5460,10 @@ tslint-eslint-rules@^5.3.1:
     tslib "1.9.0"
     tsutils "^3.0.0"
 
-tslint@^5.11.0:
-  version "5.11.0"
-  resolved "https://registry.npmjs.org/tslint/-/tslint-5.11.0.tgz#98f30c02eae3cde7006201e4c33cb08b48581eed"
-  integrity sha1-mPMMAurjzecAYgHkwzywi0hYHu0=
+tslint@^5.12.0:
+  version "5.12.0"
+  resolved "http://registry.npm.taobao.org/tslint/download/tslint-5.12.0.tgz#47f2dba291ed3d580752d109866fb640768fca36"
+  integrity sha1-R/LbopHtPVgHUtEJhm+2QHaPyjY=
   dependencies:
     babel-code-frame "^6.22.0"
     builtin-modules "^1.1.1"
