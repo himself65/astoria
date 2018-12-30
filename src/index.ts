@@ -40,6 +40,8 @@ const astoria = {
       controllers: APIControllers
     })
     console.log('/api views register success!')
+    app.use(router.routes())
+    app.use(router.allowedMethods())
     app.use(cors({ origin: `localhost:${port}` }))
     app.use(historyApiFallback({
       whiteList: ['/api']
