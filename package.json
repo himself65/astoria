@@ -21,7 +21,6 @@
   "dependencies": {
     "@koa/cors": "2",
     "axios": "^0.18.0",
-    "form-data": "^2.3.3",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-jwt": "^3.5.1",
@@ -42,7 +41,6 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@types/form-data": "^2.2.1",
     "@types/jest": "^23.3.10",
     "@types/koa": "^2.0.47",
     "@types/koa-bodyparser": "^4.2.1",
