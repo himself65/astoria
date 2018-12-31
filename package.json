@@ -42,6 +42,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "@types/fs-readfile-promise": "^3.0.0",
     "@types/jest": "^23.3.10",
     "@types/koa": "^2.0.47",
     "@types/koa-bodyparser": "^4.2.1",
