@@ -20,11 +20,13 @@ const apps = [{
   }
 }]
 
-for (const k in config.repos) {
-  const repo = config.repos[k]
-  const configPath = `${repo}/ecosystem.config.js`
-  const apps = require(configPath).apps
-  apps.push(apps)
+if (isProd) {
+  for (const k in config.repos) {
+    const repo = config.repos[k]
+    const configPath = `${repo}/ecosystem.config.js`
+    const apps = require(configPath).apps
+    apps.push(apps)
+  }
 }
 
 module.exports = {
