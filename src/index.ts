@@ -7,7 +7,8 @@ import { useKoaServer } from 'routing-controllers'
 import * as path from 'path'
 
 // controllers
-import { Controllers } from './controllers'
+import { APIControllers } from './controllers'
+import router from './router'
 
 // plugin
 import { connectDB } from './utils/database'
@@ -23,7 +24,7 @@ const {
 } = config
 
 // hack
-const isProd = process.env.NODE_ENV === 'production'
+export const isProd = process.env.NODE_ENV === 'production'
 const staticPath = isProd ? distPath : 'dist/dist'
 
 const app = new Koa()  // Singleton
@@ -36,9 +37,11 @@ const astoria = {
     app.use(requestQuery())
     useKoaServer(app, {
       routePrefix: '/api',
-      controllers: Controllers
+      controllers: APIControllers
     })
     console.log('/api views register success!')
+    app.use(router.routes())
+    app.use(router.allowedMethods())
     app.use(cors({ origin: `localhost:${port}` }))
     app.use(historyApiFallback({
       whiteList: ['/api']

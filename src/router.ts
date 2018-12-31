@@ -1,5 +1,6 @@
 import * as Router from 'koa-router'
-import * as controllers from './controllers'
+
+const controllers = [] // fixme
 import * as config from '../config.json'
 
 const router = new Router()
