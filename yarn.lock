@@ -140,6 +140,13 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
+"@types/fs-readfile-promise@^3.0.0":
+  version "3.0.0"
+  resolved "http://registry.npm.taobao.org/@types/fs-readfile-promise/download/@types/fs-readfile-promise-3.0.0.tgz#43f56289571ce05ec23df0e180eb3067dbd838a8"
+  integrity sha1-Q/ViiVcc4F7CPfDhgOswZ9vYOKg=
+  dependencies:
+    "@types/node" "*"
+
 "@types/geojson@^1.0.0":
   version "1.0.6"
   resolved "https://registry.npmjs.org/@types/geojson/-/geojson-1.0.6.tgz#3e02972728c69248c2af08d60a48cbb8680fffdf"

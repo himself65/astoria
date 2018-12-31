@@ -1,4 +1,4 @@
-import config from './config'
+const config = require('./config')
 
 const isProd = process.env.NODE_ENV === 'production'
 

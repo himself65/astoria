@@ -12,7 +12,8 @@
     "outDir": "./dist",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "moduleResolution": "node"
   },
   "include": [
     "./src/**/*"
