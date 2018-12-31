@@ -25,7 +25,7 @@ export class LuoguController {
         data: '请输入正确的信息'
       }
     } else {
-      let data = await readFilePromise(drawerDataPath).then(res => JSON.parse(res))
+      let data = await readFilePromise(drawerDataPath).then(res => JSON.parse(res.toString()))
       data.push({
         id: params.username,
         cookie: params.cookie
