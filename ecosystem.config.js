@@ -1,12 +1,12 @@
 module.exports = {
   apps: [{
     name: 'astoria',
-    script: 'src/index.js',
+    script: 'src/index.ts',
 
     args: '',
     instances: 1,
     autorestart: true,
-    exec_interpreter: "babel-node",
+    exec_interpreter: "ts-node",
 
     watch: false,
     max_memory_restart: '1G',
