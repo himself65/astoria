@@ -1889,6 +1889,18 @@ fs-minipass@^1.2.5:
   dependencies:
     minipass "^2.2.1"
 
+fs-readfile-promise@^3.0.1:
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/fs-readfile-promise/download/fs-readfile-promise-3.0.1.tgz#d0d307b7f6aedfc920c31fa6e5712efaa297c958"
+  integrity sha1-0NMHt/au38kgwx+m5XEu+qKXyVg=
+  dependencies:
+    graceful-fs "^4.1.11"
+
+fs-writefile-promise@^3.0.1:
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/fs-writefile-promise/download/fs-writefile-promise-3.0.1.tgz#dd569a8e34dc83af6803284ec2ab98403da13c2f"
+  integrity sha1-3VaajjTcg69oAyhOwquYQD2hPC8=
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"

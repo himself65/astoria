@@ -24,7 +24,7 @@ const {
 } = config
 
 // hack
-const isProd = process.env.NODE_ENV === 'production'
+export const isProd = process.env.NODE_ENV === 'production'
 const staticPath = isProd ? distPath : 'dist/dist'
 
 const app = new Koa()  // Singleton
