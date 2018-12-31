@@ -14,5 +14,8 @@
       "getUserUrl": "http://ecs.zhehao.top:5002/api/credit/get_by_group",
       "getGroupsUrl": "http://ecs.zhehao.top:5002/api/credit/get_groups"
     }
-  }
+  },
+  "repos": [
+    "/root/luogu-drawer"
+  ]
 }
