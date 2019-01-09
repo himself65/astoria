@@ -14,7 +14,6 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
-  mapCoverage: true,
   collectCoverageFrom: [
     'src/**/*.{js,ts,tsx}',
     '!**/*.d.ts'
