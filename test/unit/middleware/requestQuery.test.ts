@@ -1,4 +1,5 @@
-import requestQuery from '../../src/middleware/requestQuery'
+// @ts-ignore
+import requestQuery from '@/middleware/requestQuery'
 
 const regex = /^x-.*-type/
 
