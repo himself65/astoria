@@ -1,9 +1,13 @@
 import 'reflect-metadata'
 import * as Koa from 'koa'
 import * as server from 'koa-static'
+import * as koaBody from 'koa-body'
+// import * as passport from 'koa-passport'
+import * as koaSession from 'koa-session'
 import * as cors from '@koa/cors'
 import * as logger from 'koa-logger'
 import { useKoaServer } from 'routing-controllers'
+import historyApiFallback from 'koa2-connect-history-api-fallback'
 import * as path from 'path'
 
 // controllers
@@ -15,8 +19,9 @@ import { connectDB } from './utils/database'
 
 // local config
 import * as config from '../config.json'
-import historyApiFallback from './middleware/connect-history-api-fallback'
 import requestQuery from './middleware/requestQuery'
+// passport
+import './passport'
 
 const {
   distPath,
@@ -25,7 +30,7 @@ const {
 
 // hack
 export const isProd = process.env.NODE_ENV === 'production'
-const staticPath = isProd ? distPath : 'dist/dist'
+export const staticPath = isProd ? distPath : 'dist/dist'
 
 const app = new Koa()  // Singleton
 
@@ -42,6 +47,17 @@ const astoria = {
     console.log('/api views register success!')
     app.use(router.routes())
     app.use(router.allowedMethods())
+    app.use(koaBody())
+
+    // koa-session
+    app.keys = ['secret']
+    app.use(koaSession({}, app))
+
+    // todo
+    // // passport
+    // app.use(passport.initialize())
+    // app.use(passport.session())
+
     app.use(cors({ origin: `localhost:${port}` }))
     app.use(historyApiFallback({
       whiteList: ['/api']
@@ -51,6 +67,10 @@ const astoria = {
     await connectDB()
     app.listen(port, () => {
       console.log(`Astoria LOADED on port : ${port}`)
+      if (!isProd) {
+        // handle for open
+        console.log(`server open on: http://127.0.0.1:${port}`)
+      }
     })
   }
 }

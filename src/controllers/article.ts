@@ -19,7 +19,7 @@ export class ArticleController {
     return Article.create(article, (err, docs) => {
       if (err) throw err
       return {
-        ...docs,
+        data: docs,
         message: 'create success.'
       }
     })

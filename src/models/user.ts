@@ -1,16 +1,16 @@
 import mongoose from '../utils/database'
 
 const Schema = mongoose.Schema
-const ObjectID = mongoose.Types.ObjectId
 
 export const UserSchema = new Schema({
-  id: { type: ObjectID, index: true },
+  id: { type: mongoose.Types.ObjectId, index: true },
   username: { type: String, required: true, unique: true },
   nickname: { type: String, required: true },
   password: { type: String, required: true },
   isAdmin: { type: Boolean, default: false },
+  githubID: { type: String, unique: true },
 
   email: String
 })
 
-export const User = mongoose.model('Article', UserSchema)
+export const User = mongoose.model('User', UserSchema)
