@@ -8,7 +8,7 @@ export const UserSchema = new Schema({
   nickname: { type: String, required: true },
   password: { type: String, required: true },
   isAdmin: { type: Boolean, default: false },
-  githubID: { type: String, unique: true },
+  githubID: { type: Number, unique: true },
 
   email: String
 })

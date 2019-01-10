@@ -94,7 +94,7 @@ export class UserController {
           return axios.get('https://api.github.com/user?access_token=' + token).then(async res => {
             const { id } = res.data
             await User.findOne({
-              githubID: id
+              githubID: parseInt(id, 10)  // find user with GitHubID
             }).then(res => {
               console.log(res)
               if (!res) {
