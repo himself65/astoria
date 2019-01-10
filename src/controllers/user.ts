@@ -4,7 +4,6 @@ import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx } from
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
-import { ancestorWhere } from 'tslint'
 
 interface ILogin {
   username: string
@@ -75,35 +74,43 @@ export class UserController {
       code: code
     }
     return SecureCode.findOne({
-      content: code
+      content: state
     }).then(async docs => {
       if (!docs) { // 找不到保存到数据库的code
-        return '认证出现错误，请重试'
+        response.statusCode = 400
+        return {
+          error: '找不到code，请重试'
+        }
       } else {
-        const token = await axios.post(path, params).then(async res => {
-          if (res.status !== 200) {
-            throw res.data
-          }
-          const { error = null, access_token } = qs.parse(res.data)
-          if (error) throw res.data
-          return access_token
-        }).catch(error => {
-          return error.err
-        })
-        return axios.get('https://api.github.com/user?access_token=' + token).then(async res => {
-          const { id } = res.data
-          await User.findOne({
-            githubID: id
-          }).then(res => {
-            if (!res) {
-              return '/' // todo
-            } else {
-              return '/'  // todo
+        try {
+          const token = await axios.post(path, params).then(async res => {
+            if (res.status !== 200) {
+              throw res.data
             }
+            const { error = null, access_token } = qs.parse(res.data)
+            if (error) throw res.data
+            return access_token
           })
-        }).catch(error => {
-          return error.err
-        })
+          return axios.get('https://api.github.com/user?access_token=' + token).then(async res => {
+            const { id } = res.data
+            await User.findOne({
+              githubID: id
+            }).then(res => {
+              console.log(res)
+              if (!res) {
+                // can't find user
+                // register or bind new user
+                return '/' // todo
+              } else {
+                // find user
+                // set state
+                return '/'  // todo
+              }
+            })
+          })
+        } catch (error) {
+          console.error(error)
+        }
       }
     })
   }
