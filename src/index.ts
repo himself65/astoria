@@ -19,7 +19,7 @@ import { connectDB } from './utils/database'
 
 // local config
 import * as config from '../config.json'
-import requestQuery from './middleware/requestQuery'
+
 // passport
 import './passport'
 
@@ -39,7 +39,7 @@ const astoria = {
     console.log(`${isProd ? '生产' : '开发'}版本加载中...`)
     console.log(`静态文件根目录：${staticPath}`)
     // Load middleware
-    app.use(requestQuery())
+
     useKoaServer(app, {
       routePrefix: '/api',
       controllers: APIControllers

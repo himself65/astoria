@@ -4,6 +4,7 @@ import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx } from
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
+import { isProd } from '../index'
 
 interface ILogin {
   username: string
@@ -76,7 +77,9 @@ export class UserController {
     return SecureCode.findOne({
       content: state
     }).then(async docs => {
-      if (!docs) { // 找不到保存到数据库的code
+      if (!docs && isProd) {
+        // 找不到保存到数据库的code
+        // hack: 仅仅在非生产环境中跳过
         response.statusCode = 400
         return {
           error: '找不到code，请重试'
@@ -99,8 +102,8 @@ export class UserController {
               console.log(res)
               if (!res) {
                 // can't find user
-                // register or bind new user
-                return '/' // todo
+                // register or bind new use
+                return '/register' // todo
               } else {
                 // find user
                 // set state
