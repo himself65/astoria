@@ -3,7 +3,6 @@ const {
   metaRegex, metaLeftRegex, metaRightRegex
 } = require('@/utils/markdownParser')
 
-
 describe('metaRegex unit test', function () {
   const markdown1 = `---
     title: how to she bao darkflames
@@ -74,11 +73,15 @@ describe('metaRegex unit test', function () {
 
   describe('removeMeta unit test', () => {
     it('should remove correct value', () => {
-      expect(markdown1).toEqual(`# AWSL
+      const exp = `# AWSL
         
         ---
         shouldn't get this part
-        ---`)
+        ---`.split('\n').map(t => t.trim())
+      const res = removeMeta(markdown1).trim()
+      res.split('\n').forEach((line, idx) => {
+        expect(line.trim()).toEqual(exp[idx])
+      })
     })
   })
 })
