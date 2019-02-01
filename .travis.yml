@@ -24,7 +24,3 @@ jobs:
         - yarn run test:coverage
       after_success:
         - codecov
-    - stage: build
-      name: 'Build Test'
-      script:
-        - yarn run build
