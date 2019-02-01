@@ -19,6 +19,7 @@ import { connectDB } from './utils/database'
 
 // local config
 import * as config from '../config.json'
+// import * as privateConfig from '../config.private.json'
 
 // passport
 import './passport'
@@ -39,6 +40,10 @@ const astoria = {
     console.log(`${isProd ? '生产' : '开发'}版本加载中...`)
     console.log(`静态文件根目录：${staticPath}`)
     // Load middleware
+    // todo
+    // app.use(jwt({
+    //   secret: privateConfig.secret
+    // }))
 
     useKoaServer(app, {
       routePrefix: '/api',
