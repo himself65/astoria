@@ -13,7 +13,7 @@ function requireContents (path) {
       const filePath = resolve(path, file)
       return {
         key: regex.exec(file.toString())[0],
-        value: readFileSync(filePath)
+        value: readFileSync(filePath).toString()
       }
     })
   } catch (e) {
