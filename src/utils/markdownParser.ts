@@ -10,7 +10,7 @@ export const metaLeftRegex = /^.+?(?=(?<!\\):)/
 export const metaRightRegex = /(?<=(?<!\\):).+/
 
 export function removeMeta (markdown: string): string {
-  return metaAllRegex[Symbol.replace](markdown, '')
+  return metaAllRegex[Symbol.replace](markdown, '').trim()
 }
 
 export function parseMeta (data: string): {} {
@@ -24,7 +24,7 @@ export function parseMeta (data: string): {} {
 export function markdownParser (markdown: string): IPost {
   const meta = parseMeta(metaRegex.exec(markdown)[0])
   if (!meta['title']) {
-    console.log()
+    console.warn('title is not defined.')
   }
   let post: IPost = {
     name: meta['title'] || null,

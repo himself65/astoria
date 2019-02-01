@@ -14,6 +14,11 @@ describe('metaRegex unit test', function () {
     shouldn't get this part
     ---
     `
+  const resolvedMarkdown1 = ` # AWSL
+    
+    ---
+    shouldn't get this part
+    ---`
   const meta1 = `title: hello, world
     author: himself65`
   describe('mataRegex unit test', () => {
@@ -73,15 +78,15 @@ describe('metaRegex unit test', function () {
 
   describe('removeMeta unit test', () => {
     it('should remove correct value', () => {
-      const exp = `# AWSL
-        
-        ---
-        shouldn't get this part
-        ---`.split('\n').map(t => t.trim())
-      const res = removeMeta(markdown1).trim()
-      res.split('\n').forEach((line, idx) => {
-        expect(line.trim()).toEqual(exp[idx])
-      })
+      function checkLines (_0, _1) {
+        const _ = _1.split('\n').map(line => line.trim())
+        _0.split('\n').forEach((line, idx) => {
+          expect(line.trim()).toEqual(_[idx])
+        })
+      }
+
+      const res = removeMeta(markdown1)
+      checkLines(res, resolvedMarkdown1)
     })
   })
 })
