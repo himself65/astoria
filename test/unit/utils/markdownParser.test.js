@@ -1,5 +1,5 @@
 const {
-  removeMeta, parseMeta, markdownParser,
+  removeMeta, parseMeta,
   metaRegex, metaLeftRegex, metaRightRegex
 } = require('@/utils/markdownParser')
 

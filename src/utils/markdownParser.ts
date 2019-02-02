@@ -1,8 +1,6 @@
-import {
-  metaRegex, metaAllRegex,
-  metaLeftRegex, metaRightRegex,
-  parseMeta, removeMeta
-} from 'md-meta'
+import { metaAllRegex, metaLeftRegex, metaRegex, metaRightRegex, parseMeta, removeMeta } from 'md-meta'
+
+import * as marked from 'marked'
 
 export {
   metaRegex, metaAllRegex, metaLeftRegex, metaRightRegex,
@@ -15,17 +13,24 @@ interface IPost {
   content: string
 }
 
-export function markdownParser (markdown: string): IPost {
-  const meta = parseMeta(metaRegex.exec(markdown)[0])
-  if (!meta['title']) {
-    console.warn('title is not defined.')
+export class MarkdownParser {
+  static parseToHTML (content: string): string {
+    const src = removeMeta(content)
+    return marked(src)
   }
-  let post: IPost = {
-    name: meta['title'] || null,
-    meta: meta,
-    content: removeMeta(markdown)
+
+  static parseMeta = parseMeta
+  static removeMeta = removeMeta
+
+  static genPost (data: string, html = false): IPost {
+    const meta = this.parseMeta(data)
+    const content = this.removeMeta(data)
+    return {
+      meta: meta,
+      content: html ? this.parseToHTML(content) : content,
+      name: meta['title']
+    }
   }
-  return post
 }
 
-export default markdownParser
+export default MarkdownParser
