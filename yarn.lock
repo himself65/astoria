@@ -3730,6 +3730,11 @@ math-random@^1.0.1:
   resolved "http://registry.npm.taobao.org/math-random/download/math-random-1.0.4.tgz#5dd6943c938548267016d4e34f057583080c514c"
   integrity sha1-XdaUPJOFSCZwFtTjTwV1gwgMUUw=
 
+md-meta@^0.1.1:
+  version "0.1.1"
+  resolved "http://registry.npm.taobao.org/md-meta/download/md-meta-0.1.1.tgz#34192d9a05dfe59c50dda4e8b026272855aec58e"
+  integrity sha1-NBktmgXf5ZxQ3aTosCYnKFWuxY4=
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "http://registry.npm.taobao.org/media-typer/download/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
