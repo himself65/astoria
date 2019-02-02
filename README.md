@@ -1,7 +1,7 @@
 # Astoria
 
-[![Build Status](https://www.travis-ci.com/Himself65/Astoria.svg?branch=master)](https://www.travis-ci.com/Himself65/Astoria)
-[![codecov](https://codecov.io/gh/Himself65/Astoria/branch/master/graph/badge.svg)](https://codecov.io/gh/Himself65/Astoria)
+[![Build Status](https://www.travis-ci.com/Himself65/Astoria.svg?branch=dev)](https://www.travis-ci.com/Himself65/Astoria)
+[![codecov](https://codecov.io/gh/Himself65/Astoria/branch/dev/graph/badge.svg)](https://codecov.io/gh/Himself65/Astoria)
 [![License](https://img.shields.io/github/license/himself65/kuen.svg)](htttps:://github.com/himself65/Astoria)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/himself65/Astoria.svg)](htttps:://github.com/himself65/Astoria)
 [![GitHub top language](https://img.shields.io/github/languages/top/himself65/Astoria.svg)](htttps:://github.com/himself65/Astoria)
