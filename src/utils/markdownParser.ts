@@ -14,15 +14,15 @@ interface IPost {
 }
 
 export class MarkdownParser {
-  static parseToHTML (content: string): string {
+  public static parseToHTML (content: string): string {
     const src = removeMeta(content)
     return marked(src)
   }
 
-  static parseMeta = parseMeta
-  static removeMeta = removeMeta
+  public static parseMeta = parseMeta
+  public static removeMeta = removeMeta
 
-  static genPost (data: string, html = false): IPost {
+  public static genPost (data: string, html = false): IPost {
     const meta = this.parseMeta(data)
     const content = this.removeMeta(data)
     return {

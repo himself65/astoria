@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from 'fs'
+import { readdirSync, readFileSync, existsSync } from 'fs'
 import { resolve } from 'path'
 
 export const regex = /.*(?=\..+)/
@@ -6,6 +6,10 @@ export const regex = /.*(?=\..+)/
 function requireContents (path) {
   if (!path) {
     throw Error(`param path cannot be nullable`)
+  }
+  if (!existsSync(path)) {
+    console.warn(`not exist path: ${path}`)
+    return {}
   }
   try {
     let files = readdirSync(path)

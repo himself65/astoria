@@ -1,3 +1,3 @@
-test('test', () => {
-  expect.assertions(0)
-})
+import astoria from '@/index'
+
+astoria.run()

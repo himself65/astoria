@@ -35,7 +35,7 @@ export const staticPath = isProd ? distPath : 'dist/dist'
 
 const app = new Koa()  // Singleton
 
-const astoria = {
+export const astoria = {
   async run () {
     console.log(`${isProd ? '生产' : '开发'}版本加载中...`)
     console.log(`静态文件根目录：${staticPath}`)
@@ -80,4 +80,4 @@ const astoria = {
   }
 }
 
-const _ = astoria.run()
+export default astoria

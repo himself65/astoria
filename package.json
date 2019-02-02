@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint-fix": "tslint --fix --project tsconfig.json",
-    "dev": "cross-env NODE_ENV=development nodemon src/index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon app.ts",
     "start": "cross-env pm2 install typescript && pm2 start ecosystem.config.js --env production",
     "test": "node build/run-tests.js",
     "test:unix": "cross-env NODE_ENV=test jest",

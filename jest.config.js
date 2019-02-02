@@ -1,7 +1,7 @@
 module.exports = {
   roots: [
     '<rootDir>/src',
-    '<rootDir>/test/unit'
+    '<rootDir>/test'
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {

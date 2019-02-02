@@ -103,7 +103,7 @@ export class UserController {
               if (!res) {
                 // can't find user
                 // register or bind new use
-                return '/register' // todo
+                return `/register`
               } else {
                 // find user
                 // set state
