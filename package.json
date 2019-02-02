@@ -18,7 +18,7 @@
     "test:coverage": "yarn test --coverage"
   },
   "dependencies": {
-    "@koa/cors": "2",
+    "@koa/cors": "2.2.3",
     "axios": "^0.18.0",
     "fs-readfile-promise": "^3.0.1",
     "fs-writefile-promise": "^3.0.1",

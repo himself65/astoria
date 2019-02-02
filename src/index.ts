@@ -17,26 +17,21 @@ import router from './router'
 // plugin
 import { connectDB } from './utils/database'
 
-// local config
-import * as config from '../config.json'
-// import * as privateConfig from '../config.private.json'
-
 // passport
 import './passport'
 
-const {
-  distPath,
-  port
-} = config
-
-// hack
-export const isProd = process.env.NODE_ENV === 'production'
-export const staticPath = isProd ? distPath : 'dist/dist'
-
 const app = new Koa()  // Singleton
 
-export const astoria = {
-  async run () {
+interface IAstoria {
+  run (conf): Promise<void>
+}
+
+export const astoria: IAstoria = {
+  async run (conf) {
+    const {
+      isProd, staticPath,
+      port
+    } = conf
     console.log(`${isProd ? '生产' : '开发'}版本加载中...`)
     console.log(`静态文件根目录：${staticPath}`)
     // Load middleware

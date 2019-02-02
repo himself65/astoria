@@ -1,3 +1,7 @@
-import astoria from '@/index'
+const { astoria } = require('@/index')
 
-astoria.run()
+describe('astoria base run unit test', () => {
+  it('should run success', () => {
+    // todo
+  })
+})
