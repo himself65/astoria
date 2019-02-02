@@ -80,4 +80,4 @@ const astoria = {
   }
 }
 
-astoria.run()
+const _ = astoria.run()

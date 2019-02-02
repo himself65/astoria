@@ -1,11 +1,15 @@
 import * as Router from 'koa-router'
-
-const controllers = [] // fixme
+import requireContents from './utils/requireContents'
+import { resolve } from 'path'
 import * as config from '../config.json'
-
-const router = new Router()
 const { apiUrl } = config
+const postPath = resolve(__dirname, './statics', 'posts')
+const controllers = [] // fixme
+const router = new Router()
 
+export const posts = requireContents(postPath)
+
+// sync register controller
 for (const key in controllers) {
   if (controllers.hasOwnProperty(key)) {
     const controller = controllers[key]

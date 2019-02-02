@@ -21,7 +21,7 @@ export class UserController {
     @Body() body: ILogin,
     @Res() res) {
     const { username, password } = body
-    User.findOne({
+    await User.findOne({
       username: username,
       password: password
     }).lean(true).then(res => {

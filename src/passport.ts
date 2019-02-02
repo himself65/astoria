@@ -11,8 +11,8 @@ passport.serializeUser((user: IUser, done) => {
   done(null, user.id)
 })
 
-passport.deserializeUser(function (id: string, done) {
-  User.findById(id).lean(true).then(user => {
+passport.deserializeUser(async (id: string, done) => {
+  await User.findById(id).lean(true).then(user => {
     if (user.id) {
       done(null, user)
     } else {

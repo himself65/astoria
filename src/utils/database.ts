@@ -7,7 +7,10 @@ const dbUrl = `mongodb://localhost:${port}/${database}`
 
 export const connectDB = async () => {
   console.log('Try to connect Mongoose.')
-  await mongoose.connect(dbUrl, { useNewUrlParser: true })
+  await mongoose.connect(dbUrl, {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  })
   const db = mongoose.connection
   db.on('connected', () => {
     console.log(`Mongoose connection open to ${dbUrl}.`)
