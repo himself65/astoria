@@ -4,6 +4,7 @@ import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx } from
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
+import { isProd } from '../../config.js'
 
 interface ILogin {
   username: string
@@ -67,6 +68,7 @@ export default class UserController {
   @Redirect('/')
   redirectUrl (@Res() response, @QueryParams() query) {
     const { code, state } = query
+    console.debug(code, state)
     const path = 'https://github.com/login/oauth/access_token'
     const params = {
       client_id: ClientID,
@@ -78,7 +80,6 @@ export default class UserController {
     }).then(async docs => {
       if (!docs) {
         // 找不到保存到数据库的code
-        // hack: 仅仅在非生产环境中跳过
         response.statusCode = 400
         return {
           error: '找不到code，请重试'

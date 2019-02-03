@@ -2,7 +2,9 @@ import { astoria } from './src'
 import * as config from './config.js'
 
 const {
-  distPath
+  filePath: {
+    distPath
+  }
 } = config
 
 // hack

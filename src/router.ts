@@ -3,7 +3,7 @@ import requireContents from './utils/requireContents'
 import { resolve } from 'path'
 import * as config from '../config.js'
 
-const { apiUrl } = config
+const { api } = config
 const postPath = resolve(__dirname, './statics', 'posts')
 const controllers = [] // fixme
 const router = new Router()
@@ -22,7 +22,7 @@ for (const key in controllers) {
           console.error(`Got a nullable method on ${controller.name}.`)
           continue
         }
-        const url = `${apiUrl}/${name}`
+        const url = `${api.base}/${name}`
         router[methodName](url, methods[methodName])
         console.log(`register ${methodName} ${url}`)
       }
