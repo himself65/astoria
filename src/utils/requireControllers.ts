@@ -11,7 +11,9 @@ export function requireControllers (dir: string): Function[] {
   try {
     const files = readdirSync(dir)
     return files.map(file => {
-      return require(join(dir, file))
+      const path = join(dir, file)
+      console.debug('[astoria] load controller:', file)
+      return require(path).default
     })
   } catch (e) {
     throw e
