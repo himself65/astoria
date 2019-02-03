@@ -43,7 +43,7 @@ import {
   ClientSecret as GITHUB_CLIENT_SECRET
 } from '../config.private.json'
 
-import { port } from '../config.json'
+import { port } from '../config.js'
 
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,

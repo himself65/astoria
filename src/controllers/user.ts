@@ -13,7 +13,7 @@ interface ILogin {
 const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
 
 @JsonController()
-export class UserController {
+export default class UserController {
 
   @Post('/login')
   async login (

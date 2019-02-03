@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose'
-import { mongodb } from '../../config.json'
+import { mongodb } from '../../config.js'
 
 const { port, database } = mongodb
 

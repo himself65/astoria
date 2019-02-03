@@ -2,7 +2,7 @@ import { Article } from '../models/article'
 import { JsonController, Get, Post, Param, Body, Put, QueryParams } from 'routing-controllers'
 
 @JsonController()
-export class ArticleController {
+export default class ArticleController {
 
   @Get('/articles')
   getAll () {

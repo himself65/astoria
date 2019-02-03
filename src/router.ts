@@ -1,7 +1,8 @@
 import * as Router from 'koa-router'
 import requireContents from './utils/requireContents'
 import { resolve } from 'path'
-import * as config from '../config.json'
+import * as config from '../config.js'
+
 const { apiUrl } = config
 const postPath = resolve(__dirname, './statics', 'posts')
 const controllers = [] // fixme

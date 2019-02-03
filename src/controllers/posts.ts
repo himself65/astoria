@@ -1,12 +1,12 @@
 import { JsonController, Get, Param, Res } from 'routing-controllers'
-import { postsPath as ph } from '../../config.json'
+import { postsPath as ph } from '../../config.js'
 import * as fsReadFilePromise from 'fs-readfile-promise'
 
 const isProd = process.env.NODE_ENV === 'production'
 const postsPath = isProd ? ph : 'dist/dist/_posts'
 
 @JsonController()
-export class PostsController {
+export default class PostsController {
 
   @Get('/posts')
   async getAll (@Res() res) {

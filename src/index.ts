@@ -11,7 +11,7 @@ import historyApiFallback from 'koa2-connect-history-api-fallback'
 import * as path from 'path'
 
 // controllers
-import { APIControllers } from './controllers'
+import { requireControllers } from './utils/requireControllers'
 import router from './router'
 
 // plugin
@@ -30,7 +30,7 @@ export const astoria: IAstoria = {
   async run (conf) {
     const {
       isProd, staticPath,
-      port
+      appPath, port
     } = conf
     console.log(`${isProd ? '生产' : '开发'}版本加载中...`)
     console.log(`静态文件根目录：${staticPath}`)
@@ -42,7 +42,7 @@ export const astoria: IAstoria = {
 
     useKoaServer(app, {
       routePrefix: '/api',
-      controllers: APIControllers
+      controllers: requireControllers(appPath.controllers)
     })
     console.log('/api views register success!')
     app.use(router.routes())

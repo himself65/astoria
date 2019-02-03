@@ -1,5 +1,5 @@
 import { astoria } from './src'
-import * as config from './config.json'
+import * as config from './config.js'
 
 const {
   distPath
