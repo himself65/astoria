@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+import db from 'debug'
 import * as Koa from 'koa'
 import * as server from 'koa-static'
 import * as koaBody from 'koa-body'
@@ -18,7 +19,7 @@ import router from './router'
 // plugin
 import { connectDB } from './utils/database'
 
-export const debug = require('debug')('astoria')
+export const debug = db('astoria')
 
 const app = new Koa()  // Singleton
 

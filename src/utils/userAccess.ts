@@ -12,8 +12,8 @@ interface IUserAccess {
 export function userAccess ({ whiteList = [], apiPrefix }: IUserAccess): Middleware {
   return async function (ctx, next) {
     const to = ctx.request.url
-    if (regex.test(to) ||
-      (whiteList && !whiteList.some(t => t.match(to) !== null))) {
+    if (regex.test(to) &&
+      (whiteList && whiteList.some(t => t.match(to) !== null))) {
       // todo: check if there have permission
       const token = ctx.request.headers['Authorization']
       debug(to, token)
