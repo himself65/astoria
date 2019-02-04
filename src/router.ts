@@ -1,4 +1,5 @@
 import * as Router from 'koa-router'
+import { debug } from './'
 import requireContents from './utils/requireContents'
 import { resolve } from 'path'
 import * as config from '../config.js'
@@ -19,12 +20,12 @@ for (const key in controllers) {
     for (const methodName in methods) {
       if (methods.hasOwnProperty(methodName)) {
         if (methods[methodName] === null || methods[methodName] === undefined) {
-          console.error(`Got a nullable method on ${controller.name}.`)
+          debug(`Got a nullable method on ${controller.name}.`)
           continue
         }
         const url = `${api.base}/${name}`
         router[methodName](url, methods[methodName])
-        console.log(`register ${methodName} ${url}`)
+        debug(`register ${methodName} ${url}`)
       }
     }
   }

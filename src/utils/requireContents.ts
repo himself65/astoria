@@ -3,7 +3,9 @@ import { resolve } from 'path'
 
 export const regex = /.*(?=\..+)/
 
-function requireContents (path) {
+// @deprecated
+// 动态加载Markdown静态资源
+export function requireContents (path) {
   if (!path) {
     throw Error(`param path cannot be nullable`)
   }
@@ -24,7 +26,5 @@ function requireContents (path) {
     throw e
   }
 }
-
-export { requireContents }
 
 export default requireContents

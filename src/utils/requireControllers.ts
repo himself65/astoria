@@ -1,4 +1,5 @@
 import { readdirSync, existsSync } from 'fs'
+import { debug } from '../'
 import { join } from 'path'
 
 export function requireControllers (dir: string): Function[] {
@@ -12,10 +13,12 @@ export function requireControllers (dir: string): Function[] {
     const files = readdirSync(dir)
     return files.map(file => {
       const path = join(dir, file)
-      console.debug('[astoria] load controller:', file)
+      debug('[astoria] load controller:', file)
       return require(path).default
     })
   } catch (e) {
     throw e
   }
 }
+
+export default requireControllers

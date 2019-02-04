@@ -8,7 +8,7 @@
   "main": "src/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon app.ts",
+    "dev": "cross-env DEBUG=astoria NODE_ENV=development nodemon app.ts",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint-fix": "tslint --fix --project tsconfig.json",
     "start": "cross-env pm2 install typescript && pm2 start ecosystem.config.js --env production",
@@ -50,6 +50,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "@types/debug": "^0.0.31",
     "@types/fs-readfile-promise": "^3.0.0",
     "@types/jest": "^23.3.10",
     "@types/koa": "^2.0.47",

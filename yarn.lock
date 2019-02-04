@@ -118,6 +118,11 @@
     "@types/keygrip" "*"
     "@types/node" "*"
 
+"@types/debug@^0.0.31":
+  version "0.0.31"
+  resolved "http://registry.npm.taobao.org/@types/debug/download/@types/debug-0.0.31.tgz#bac8d8aab6a823e91deb7f79083b2a35fa638f33"
+  integrity sha1-usjYqraoI+kd6395CDsqNfpjjzM=
+
 "@types/events@*":
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/@types/events/download/@types/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"

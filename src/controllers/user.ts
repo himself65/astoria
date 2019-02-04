@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { debug } from '../'
 import * as qs from 'querystring'
-import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx } from 'routing-controllers'
+import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx, Req } from 'routing-controllers'
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
@@ -15,6 +16,11 @@ const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
 
 @JsonController()
 export default class UserController {
+
+  @Get('/user')
+  async getCurrentUser (@Req() req) {
+
+  }
 
   @Post('/login')
   async login (
@@ -68,7 +74,7 @@ export default class UserController {
   @Redirect('/')
   redirectUrl (@Res() response, @QueryParams() query) {
     const { code, state } = query
-    console.debug(code, state)
+    debug(code, state)
     const path = 'https://github.com/login/oauth/access_token'
     const params = {
       client_id: ClientID,
@@ -99,7 +105,7 @@ export default class UserController {
             await User.findOne({
               githubID: parseInt(id, 10)  // find user with GitHubID
             }).then(res => {
-              console.log(res)
+              debug(res)
               if (!res) {
                 // can't find user
                 // register or bind new use
