@@ -69,10 +69,10 @@ export const astoria: IAstoria = {
     app.use(logger())
     await connectDB()
     app.listen(port, () => {
-      debug(`Astoria LOADED on port : ${port}`)
+      console.log(`Astoria LOADED on port : ${port}`)
       if (!isProd) {
         // handle for open
-        console.log(`server open on: http://127.0.0.1:${port}`)
+        debug(`server open on: http://127.0.0.1:${port}`)
       }
     })
   }
