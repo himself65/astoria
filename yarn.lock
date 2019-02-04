@@ -1401,7 +1401,7 @@ debug@3.1.0, debug@=3.1.0, debug@~3.1.0:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.0.1:
+debug@4, debug@^4.0.1, debug@^4.1.1:
   version "4.1.1"
   resolved "http://registry.npm.taobao.org/debug/download/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   integrity sha1-O3ImAlUQnGtYnO4FDx1RYTlmR5E=
@@ -4039,9 +4039,9 @@ math-random@^1.0.1:
   integrity sha1-XdaUPJOFSCZwFtTjTwV1gwgMUUw=
 
 md-meta@^0.1.1:
-  version "0.1.1"
-  resolved "http://registry.npm.taobao.org/md-meta/download/md-meta-0.1.1.tgz#34192d9a05dfe59c50dda4e8b026272855aec58e"
-  integrity sha1-NBktmgXf5ZxQ3aTosCYnKFWuxY4=
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/md-meta/download/md-meta-0.1.2.tgz#892f4ea208fa3a942d0eac8e12a2cbf6d4937ee5"
+  integrity sha1-iS9Oogj6OpQtDqyOEqLL9tSTfuU=
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -4221,9 +4221,9 @@ mongoose-legacy-pluralize@1.0.2:
   integrity sha1-O6n5H6UHtRhtOZ+0CFS/8Y+1Y+Q=
 
 mongoose@^5.4.1:
-  version "5.4.8"
-  resolved "http://registry.npm.taobao.org/mongoose/download/mongoose-5.4.8.tgz#f56bc514ee51593ce31b4f794d1f26f97dce10e9"
-  integrity sha1-9WvFFO5RWTzjG095TR8m+X3OEOk=
+  version "5.4.9"
+  resolved "http://registry.npm.taobao.org/mongoose/download/mongoose-5.4.9.tgz#3cf4f74d2598e62974b7b617a4fa34a838bf32b4"
+  integrity sha1-PPT3TSWY5il0t7YXpPo0qDi/MrQ=
   dependencies:
     async "2.6.1"
     bson "~1.1.0"
