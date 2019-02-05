@@ -18,7 +18,7 @@ import * as path from 'path'
 // controllers
 import requireControllers from './utils/requireControllers'
 import router from './router'
-import devRouter from './utils/registerExample'
+import registerExample from './utils/registerExample'
 
 // plugin
 import { connectDB } from './utils/database'
@@ -49,6 +49,7 @@ export const astoria: IAstoria = {
     app.use(router.routes())
     app.use(router.allowedMethods())
     if (!isProd) {
+      const devRouter = registerExample()
       app.use(devRouter.routes())
       app.use(devRouter.allowedMethods())
       debug('dev model loaded')

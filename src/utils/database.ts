@@ -26,4 +26,6 @@ export const connectDB = async () => {
   return db
 }
 
+export { mongoose }
+
 export default mongoose

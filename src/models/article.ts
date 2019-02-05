@@ -1,4 +1,5 @@
 import mongoose from '../utils/database'
+import { Document } from 'mongoose'
 
 const Schema = mongoose.Schema
 
@@ -9,6 +10,15 @@ export const ArticleSchema = new Schema({
   createdDate: { type: Date, default: () => Date() }
 })
 
+export interface IArticle extends Document {
+  author: string
+  title: string
+  content: string
+  createdDate: Date
+}
+
+export const Article = mongoose.model<IArticle>('Article', ArticleSchema)
+
 export async function create () {
   await Article.create({
     author: 'himself65',
@@ -16,5 +26,3 @@ export async function create () {
     content: 'none'
   })
 }
-
-export const Article = mongoose.model('Article', ArticleSchema)
