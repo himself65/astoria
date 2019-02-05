@@ -37,10 +37,8 @@ interface IUserSchema extends Document {
 }
 
 UserSchema.pre<IUserSchema>('save', function (next) {
-  debug(this.isNew)
   if (this.isNew) {
     this.password = crypto.PBKDF2(this.password as string, this.sale)
-    debug(this.password)
   }
   next()
 })
