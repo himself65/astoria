@@ -43,8 +43,7 @@ export const astoria: IAstoria = {
     //   secret: privateConfig.secret
     // }))
     app.use(userAccess({
-      whiteList: [/^\/api\/login/, /^\/login/],
-      blackList: [/^\/backstage/]
+      whiteList: [/^\/api\/login/, /^\/login/]
     }))
     debug('/api views register success!')
     app.use(router.routes())

@@ -31,19 +31,25 @@ export const UserSchema = new Schema({
   sale: { type: String, default: () => crypto.lib.WordArray.random(128 / 8) }
 })
 
-interface IUserSchema extends Document {
-  password: string | crypto.WordArray,
+export interface IUser extends Document {
+  username: string
+  nickname: string
+  email: string
+  githubID: number
+  level: number
+  password: string | crypto.WordArray
+  token: string
   sale: string
 }
 
-UserSchema.pre<IUserSchema>('save', function (next) {
+UserSchema.pre<IUser>('save', function (next) {
   if (this.isNew) {
     this.password = crypto.PBKDF2(this.password as string, this.sale)
   }
   next()
 })
 
-export const User = mongoose.model('User', UserSchema)
+export const User = mongoose.model<IUser>('User', UserSchema)
 
 export async function create () {
   await User.create({
