@@ -1,6 +1,8 @@
 import mongoose from '../utils/database'
 
-export const ArticleSchema = new mongoose.Schema({
+const Schema = mongoose.Schema
+
+export const ArticleSchema = new Schema({
   author: { type: String, ref: 'author' },
   title: { type: String, required: true },
   content: { type: String, required: true },

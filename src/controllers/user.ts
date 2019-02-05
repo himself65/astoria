@@ -5,7 +5,6 @@ import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx, Req }
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
-import { isProd } from '../../config.js'
 
 interface ILogin {
   username: string
@@ -19,7 +18,7 @@ export default class UserController {
 
   @Get('/user')
   async getCurrentUser (@Req() req) {
-
+    // todo
   }
 
   @Post('/login')
