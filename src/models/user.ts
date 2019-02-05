@@ -1,7 +1,8 @@
-// import crypto from 'crypto'
+import * as crypto from 'crypto-js'
 import mongoose from '../utils/database'
 import { UserPermission } from '../utils/shared'
 import { debug } from '../'
+import { Document } from 'mongoose'
 
 const Schema = mongoose.Schema
 
@@ -26,7 +27,22 @@ export const UserSchema = new Schema({
     type: String,
     unique: true,
     required: false
+  },
+  sale: { type: String, default: () => crypto.lib.WordArray.random(128 / 8) }
+})
+
+interface IUserSchema extends Document {
+  password: string | crypto.WordArray,
+  sale: string
+}
+
+UserSchema.pre<IUserSchema>('save', function (next) {
+  debug(this.isNew)
+  if (this.isNew) {
+    this.password = crypto.PBKDF2(this.password as string, this.sale)
+    debug(this.password)
   }
+  next()
 })
 
 export const User = mongoose.model('User', UserSchema)
@@ -35,7 +51,7 @@ export async function create () {
   await User.create({
     username: 'himself65',
     nickname: '扩散性百万甜面包',
-    password: '123456', // fixme: use sale hash
+    password: '123456',
     level: UserPermission.root
   }).then(debug('created user success.'))
 }
