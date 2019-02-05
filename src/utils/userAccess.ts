@@ -6,8 +6,8 @@ import { UserPermission } from './shared'
 export const regex = /^\/?[^.]+$/
 
 interface IUserAccess {
-  whiteList?: string[]
-  blackList?: string[]
+  whiteList?: (string | RegExp)[]
+  blackList?: (string | RegExp)[]
   apiPrefix?: string
 }
 
@@ -16,9 +16,13 @@ export function userAccess ({ whiteList: wl, blackList: bl, apiPrefix = '/api' }
   const blackList = bl || ['']
   return async function (ctx, next) {
     const to = ctx.request.url
-    if (regex.test(to)
-      && whiteList.every(t => RegExp(t).test(to) === null)
-      && blackList.some(t => RegExp(t).test(to) !== null)) {
+    const matched = regex.test(to)
+    const white = whiteList.every(t => RegExp(t).test(to) === false)
+    const black = blackList.some(t => RegExp(t).test(to) !== false)
+    if (matched) debug('matched', to)
+    if (white) debug('whited', to)
+    if (black) debug('blacked', to)
+    if (matched && white && black) {
       // todo: check if there have permission
       const token = ctx.request.headers['Authorization']
       debug(`matched path: ${to}`, `token: ${token || 'none'}`)

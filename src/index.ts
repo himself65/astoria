@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 // @ts-ignore
 import db from 'debug'
+
 export const debug = db('astoria')
 import * as Koa from 'koa'
 import * as server from 'koa-static'
@@ -41,14 +42,10 @@ export const astoria: IAstoria = {
     // app.use(jwt({
     //   secret: privateConfig.secret
     // }))
-
     app.use(userAccess({
-      apiPrefix: '/api/login'
+      whiteList: [/^\/api\/login/, /^\/login/],
+      blackList: [/^\/backstage/]
     }))
-    useKoaServer(app, {
-      routePrefix: api.base,
-      controllers: requireControllers(appPath.controllers)
-    })
     debug('/api views register success!')
     app.use(router.routes())
     app.use(router.allowedMethods())
@@ -75,6 +72,10 @@ export const astoria: IAstoria = {
     app.use(server(path.resolve(staticPath), { defer: true }))  // waiting after others loaded
     app.use(logger())
     await connectDB()
+    useKoaServer(app, {
+      routePrefix: api.base,
+      controllers: requireControllers(appPath.controllers)
+    })
     app.listen(port, () => {
       console.log(`Astoria LOADED on port : ${port}`)
       if (!isProd) {
