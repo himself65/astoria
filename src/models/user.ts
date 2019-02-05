@@ -11,10 +11,6 @@ const Schema = mongoose.Schema
  * @param password 密码，加密后保存
  */
 export const UserSchema = new Schema({
-  id: {
-    type: mongoose.Types.ObjectId,
-    index: true
-  },
   username: { type: String, required: true, unique: true },
   nickname: { type: String, required: true },
   password: { type: String, required: true },
