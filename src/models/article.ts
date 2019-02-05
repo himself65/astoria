@@ -3,7 +3,8 @@ import mongoose from '../utils/database'
 const Schema = mongoose.Schema
 
 export const ArticleSchema = new Schema({
-  author: { type: String, required: true },
+  id: { type: Number, index: true },
+  author: { type: mongoose.Types.ObjectId, ref: 'author' },
   title: { type: String, required: true },
   content: { type: String, required: true }
 })

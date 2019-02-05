@@ -1,5 +1,7 @@
 import 'reflect-metadata'
+// @ts-ignore
 import db from 'debug'
+export const debug = db('astoria')
 import * as Koa from 'koa'
 import * as server from 'koa-static'
 import * as koaBody from 'koa-body'
@@ -15,11 +17,10 @@ import * as path from 'path'
 // controllers
 import requireControllers from './utils/requireControllers'
 import router from './router'
+import devRouter from './utils/registerExample'
 
 // plugin
 import { connectDB } from './utils/database'
-
-export const debug = db('astoria')
 
 const app = new Koa()  // Singleton
 
@@ -51,6 +52,11 @@ export const astoria: IAstoria = {
     debug('/api views register success!')
     app.use(router.routes())
     app.use(router.allowedMethods())
+    if (!isProd) {
+      app.use(devRouter.routes())
+      app.use(devRouter.allowedMethods())
+      debug('dev model loaded')
+    }
     app.use(koaBody())
 
     // koa-session
@@ -64,7 +70,7 @@ export const astoria: IAstoria = {
 
     app.use(cors({ origin: `localhost:${port}` }))
     app.use(historyApiFallback({
-      whiteList: ['/api']
+      whiteList: ['/api', '/dev']
     }))
     app.use(server(path.resolve(staticPath), { defer: true }))  // waiting after others loaded
     app.use(logger())
