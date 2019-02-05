@@ -259,7 +259,7 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^5.3.5":
+"@types/mongoose@^5.3.12":
   version "5.3.12"
   resolved "http://registry.npm.taobao.org/@types/mongoose/download/@types/mongoose-5.3.12.tgz#15cfda757852a2da2840fc2b001e693039cbbdf5"
   integrity sha1-Fc/adXhSotooQPwrAB5pMDnLvfU=
@@ -4230,7 +4230,7 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "http://registry.npm.taobao.org/mongoose-legacy-pluralize/download/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha1-O6n5H6UHtRhtOZ+0CFS/8Y+1Y+Q=
 
-mongoose@^5.4.1:
+mongoose@^5.4.9:
   version "5.4.9"
   resolved "http://registry.npm.taobao.org/mongoose/download/mongoose-5.4.9.tgz#3cf4f74d2598e62974b7b617a4fa34a838bf32b4"
   integrity sha1-PPT3TSWY5il0t7YXpPo0qDi/MrQ=
@@ -6205,7 +6205,7 @@ tslint-eslint-rules@^5.3.1:
     tslib "1.9.0"
     tsutils "^3.0.0"
 
-tslint@^5.12.0:
+tslint@^5.12.1:
   version "5.12.1"
   resolved "http://registry.npm.taobao.org/tslint/download/tslint-5.12.1.tgz#8cec9d454cf8a1de9b0a26d7bdbad6de362e52c1"
   integrity sha1-jOydRUz4od6bCibXvbrW3jYuUsE=
@@ -6279,24 +6279,24 @@ typedi@^0.8.0:
   resolved "http://registry.npm.taobao.org/typedi/download/typedi-0.8.0.tgz#d8e203bd1d41a96e2b0a5c6295147d74b2b2d03e"
   integrity sha1-2OIDvR1BqW4rClxilRR9dLKy0D4=
 
-typescript-eslint-parser@^21.0.2:
-  version "21.0.2"
-  resolved "http://registry.npm.taobao.org/typescript-eslint-parser/download/typescript-eslint-parser-21.0.2.tgz#270af10e4724528677fbcf34ea495284bec3a894"
-  integrity sha1-JwrxDkckUoZ3+8806klShL7DqJQ=
+typescript-eslint-parser@^22.0.0:
+  version "22.0.0"
+  resolved "http://registry.npm.taobao.org/typescript-eslint-parser/download/typescript-eslint-parser-22.0.0.tgz#f5e766c9b50711b03535e29a10b45f957e3c516a"
+  integrity sha1-9edmybUHEbA1NeKaELRflX48UWo=
   dependencies:
     eslint-scope "^4.0.0"
     eslint-visitor-keys "^1.0.0"
-    typescript-estree "5.3.0"
+    typescript-estree "18.0.0"
 
-typescript-estree@5.3.0:
-  version "5.3.0"
-  resolved "http://registry.npm.taobao.org/typescript-estree/download/typescript-estree-5.3.0.tgz#fb6c977b5e21073eb16cbdc0338a7f752da99ff5"
-  integrity sha1-+2yXe14hBz6xbL3AM4p/dS2pn/U=
+typescript-estree@18.0.0:
+  version "18.0.0"
+  resolved "http://registry.npm.taobao.org/typescript-estree/download/typescript-estree-18.0.0.tgz#a309f6c6502c64d74b3f88c205d871a9af0b1d40"
+  integrity sha1-own2xlAsZNdLP4jCBdhxqa8LHUA=
   dependencies:
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-typescript@^3.2.2:
+typescript@^3.3.1:
   version "3.3.1"
   resolved "http://registry.npm.taobao.org/typescript/download/typescript-3.3.1.tgz#6de14e1db4b8a006ac535e482c8ba018c55f750b"
   integrity sha1-beFOHbS4oAasU15ILIugGMVfdQs=
