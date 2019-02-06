@@ -2,7 +2,7 @@ import axios from 'axios'
 import * as crypto from 'crypto-js'
 import { debug } from '../'
 import * as qs from 'querystring'
-import { JsonController, Body, Res, Get, QueryParams, Redirect, Ctx, Req } from 'routing-controllers'
+import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx, Req } from 'routing-controllers'
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
@@ -19,11 +19,18 @@ export default class UserController {
 
   @Get('/user')
   async getCurrentUser (@Req() req) {
-    // todo
+    const token = req.headers['authorization']
+    return User.findOne({
+      token: token
+    }).lean(true)
+      .then(res => {
+        return {
+          data: res
+        }
+      })
   }
 
-  @Get('/login')
-  @Redirect('/')
+  @Post('/login')
   async login (
     @Body() body: ILogin,
     @Res() response) {
@@ -35,9 +42,8 @@ export default class UserController {
       username: username,
       password: password
     }).lean(true).then(res => {
-      response.headers['authorization'] = crypto.PBKDF2(res.username, res.sale)
-      if (!res) {
-        return '/error'
+      return {
+        data: crypto.PBKDF2(res.username, res.sale)
       }
     })
   }
