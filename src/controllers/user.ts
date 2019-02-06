@@ -1,7 +1,8 @@
 import axios from 'axios'
+import * as crypto from 'crypto-js'
 import { debug } from '../'
 import * as qs from 'querystring'
-import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx, Req } from 'routing-controllers'
+import { JsonController, Body, Res, Get, QueryParams, Redirect, Ctx, Req } from 'routing-controllers'
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
@@ -21,34 +22,41 @@ export default class UserController {
     // todo
   }
 
-  @Post('/login')
+  @Get('/login')
+  @Redirect('/')
   async login (
     @Body() body: ILogin,
-    @Res() res) {
+    @Res() response) {
     const { username, password } = body
+    if (!(username && password)) {
+      return '/error'
+    }
     await User.findOne({
       username: username,
       password: password
     }).lean(true).then(res => {
+      response.headers['authorization'] = crypto.PBKDF2(res.username, res.sale)
       if (!res) {
-        return {
-          error: '用户不存在'
-        }
-      } else {
-        return {
-          data: res
-        }
+        return '/error'
       }
     })
   }
 
-  @Post('/logout')
+  @Get('/logout')
+  @Redirect('/')
   async logout (
     @Res() res) {
-    // todo
-    res.statusCode = 404
+    const token = res.headers['authorization']
+    await User.findOneAndUpdate(
+      { token: token },
+      { token: '' })
+      .then(res => {
+        console.log(arguments)
+      })
+
   }
 
+  // todo
   @Get('/login/auth/github')
   @Redirect('/')
   async loginWithGithub (@Body() body, @Ctx() ctx) {
