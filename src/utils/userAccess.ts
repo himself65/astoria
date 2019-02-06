@@ -6,6 +6,9 @@ import { UserPermission } from './shared'
 
 export const regex = /^\/?[^.]+$/
 
+export const regexToken = /[\S]+(?=-)/
+export const regexTimeout = /(?<=-)[1-9]+/
+
 interface IUserAccess {
   whiteList?: (string | RegExp)[]
 }
@@ -19,11 +22,15 @@ export function userAccess ({ whiteList: wl }: IUserAccess): Middleware {
     if (matched) debug('matched', to)
     if (white) debug('whited', to)
     if (matched && white) {
-      const token = ctx.request.headers['authorization']
+      const token = regexToken.exec(ctx.request.headers['authorization'])[0]
+      const time = parseInt(regexTimeout.exec(ctx.request.headers['authorization'])[0], 10)
       debug(`matched path: ${to}`, `token: ${token || 'none'}`)
-      if (token) {
+      if (Date.parse(Date.toString()) < time) {
+        // timeout
+        ctx.userLevel = UserPermission.default
+      } else if (token) {
         await User.findOne({
-          token: token
+          password: token
         }).lean(true)
           .then(res => {
             if (isObject(res) && res.token === token) {

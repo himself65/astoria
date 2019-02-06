@@ -12,7 +12,8 @@ interface ILogin {
   password: string
 }
 
-const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
+export const timeoutDurationDays = 5
+export const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
 
 @JsonController()
 export default class UserController {
@@ -32,18 +33,30 @@ export default class UserController {
 
   @Post('/login')
   async login (
-    @Body() body: ILogin,
+    @Body() body,
     @Res() response) {
+    debug(body)
     const { username, password } = body
-    if (!(username && password)) {
+    if (!username || !password) {
       return '/error'
     }
-    await User.findOne({
-      username: username,
-      password: password
-    }).lean(true).then(res => {
-      return {
-        data: crypto.PBKDF2(res.username, res.sale)
+    return User.findOne({
+      username: username
+    }).lean(true).then(async res => {
+      const pw = crypto.PBKDF2(password, res.sale).toString()
+      debug(res.password, pw)
+      if (res.password === pw) {
+        // 密码正确
+        const after = new Date()
+        after.setDate(after.getDate() + timeoutDurationDays)
+        const token = `${pw}-${Date.parse(after.toString())}`
+        return {
+          data: token
+        }
+      } else {
+        return {
+          error: '请重新检查您的账号或密码'
+        }
       }
     })
   }

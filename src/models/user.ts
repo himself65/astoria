@@ -38,7 +38,6 @@ export interface IUser extends Document {
   githubID: number
   level: number
   password: string | crypto.WordArray
-  token: string
   sale: string
 }
 
