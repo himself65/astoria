@@ -46,6 +46,7 @@ export default class UserController {
 
   @Post('/login')
   async login (
+    @Ctx() ctx,
     @Body() body,
     @Res() response) {
     debug(body)
@@ -63,6 +64,7 @@ export default class UserController {
         const after = new Date()
         after.setDate(after.getDate() + timeoutDurationDays)
         const token = `${pw}-${Date.parse(after.toString())}`
+        ctx.cookies.set('token', token)
         return {
           data: token
         }

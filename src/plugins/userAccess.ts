@@ -21,14 +21,14 @@ export const plugin = {
       if (matched) debug('matched', to)
       if (matched && white) debug('whited', to)
       if (matched && white) {
-        const authorization = ctx.request.headers['authorization'] || ''
+        const authorization = ctx.cookies.get('token')
         let token = ''
         let time = 0
         if (regexToken.test(authorization)) {
           token = regexToken.exec(authorization)[0]
         }
         if (regexTimeout.test(authorization)) {
-          time = parseInt(regexTimeout.exec(ctx.request.headers['authorization'])[0], 10)
+          time = parseInt(regexTimeout.exec(authorization)[0], 10)
         }
         debug(`matched path: ${to}`, `token: ${token}, timeout: ${time}`)
         if (Date.parse(Date.toString()) < time || !token) {

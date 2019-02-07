@@ -7,7 +7,7 @@ const staticPath = resolve(__dirname, '../', 'himself65', 'dist')
 module.exports = {
   appName: 'himself65',
   root: {
-    username: '123456',
+    username: 'himself65',
     password: '123456'
   },
   staticPath,
