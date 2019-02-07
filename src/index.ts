@@ -1,58 +1,23 @@
 import 'reflect-metadata'
+// @ts-ignore
+import db from 'debug'
+
+export const debug = db('astoria')
 import * as Koa from 'koa'
-import * as server from 'koa-static'
-import * as cors from '@koa/cors'
-import * as logger from 'koa-logger'
-import { useKoaServer } from 'routing-controllers'
-import * as path from 'path'
+import registerExample from './utils/registerExample'
 
-// controllers
-import { APIControllers } from './controllers'
-import router from './router'
-
-// plugin
-import { connectDB } from './utils/database'
-
-// local config
-import * as config from '../config.json'
-import historyApiFallback from './middleware/connect-history-api-fallback'
-import requestQuery from './middleware/requestQuery'
-
-const {
-  distPath,
-  port
-} = config
-
-// hack
-export const isProd = process.env.NODE_ENV === 'production'
-const staticPath = isProd ? distPath : 'dist/dist'
+import { loadPlugins } from './loadPlugins'
 
 const app = new Koa()  // Singleton
 
-const astoria = {
-  async run () {
-    console.log(`${isProd ? '生产' : '开发'}版本加载中...`)
-    console.log(`静态文件根目录：${staticPath}`)
-    // Load middleware
-    app.use(requestQuery())
-    useKoaServer(app, {
-      routePrefix: '/api',
-      controllers: APIControllers
-    })
-    console.log('/api views register success!')
-    app.use(router.routes())
-    app.use(router.allowedMethods())
-    app.use(cors({ origin: `localhost:${port}` }))
-    app.use(historyApiFallback({
-      whiteList: ['/api']
-    }))
-    app.use(server(path.resolve(staticPath), { defer: true }))  // waiting after others loaded
-    app.use(logger())
-    await connectDB()
-    app.listen(port, () => {
-      console.log(`Astoria LOADED on port : ${port}`)
-    })
+interface IAstoria {
+  run (conf): Promise<void>
+}
+
+export const astoria: IAstoria = {
+  async run (conf) {
+    loadPlugins(app)
   }
 }
 
-astoria.run()
+export default astoria
