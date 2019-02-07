@@ -8,8 +8,6 @@ import * as Koa from 'koa'
 import router from './router'
 import registerExample from './utils/registerExample'
 
-// plugin
-import { connectDB } from './utils/database'
 import { loadPlugins } from './loadPlugins'
 
 const app = new Koa()  // Singleton

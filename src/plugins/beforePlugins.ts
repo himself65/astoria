@@ -2,7 +2,7 @@ import * as koaBody from 'koa-body'
 
 export const plugin = {
   name: 'BeforePlugins',
-  priority: 1,
+  priority: Number.MIN_VALUE,
   register: (app) => {
     app.use(koaBody())
   }
