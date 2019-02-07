@@ -34,7 +34,7 @@ export const plugin = {
         if (Date.parse(Date.toString()) < time || !token) {
           // timeout
           ctx.user = {
-            name: null,
+            username: null,
             level: UserPermission.default
           }
         } else if (token) {
@@ -44,13 +44,13 @@ export const plugin = {
             .then(res => {
               if (isObject(res) && res.password === token) {
                 ctx.user = {
-                  name: res.username,
+                  username: res.username,
                   level: res.level
                 }
                 debug(res.username, 'have access:', UserPermission[res.level])
               } else {
                 ctx.user = {
-                  name: null,
+                  username: null,
                   level: UserPermission.default
                 }
               }

@@ -5,9 +5,9 @@ import { Article } from '../models/article'
 export const router = new KoaRouter({ prefix: '/api' })
 
 router.post('/article', async (ctx) => {
-  debug('/api/article', ctx.request.body)
-  const { content = null, title = null } = ctx.request.body
-  const { name: username = null } = ctx.user
+  const { content, title } = ctx.request.body
+  const { username } = ctx.user
+  debug(username, ctx.path, ctx.request.body)
   if (content && title && username) {
     await Article.create({
       author: username,
