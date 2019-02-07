@@ -25,4 +25,21 @@ router.post('/article', async (ctx) => {
   }
 })
 
+export const pageLimit = 2
+
+router.get('/articles', async (ctx) => {
+  const { page = 0 } = ctx.request.query
+  await Article.find()
+    .sort('-createdDate')
+    .skip(page * pageLimit)
+    .limit(pageLimit)
+    .lean(true)
+    .select('author title content')
+    .then(res => {
+      ctx.response.body = {
+        data: res
+      }
+    })
+})
+
 export default router
