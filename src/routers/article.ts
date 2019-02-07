@@ -41,6 +41,23 @@ router.post('/article', async (ctx) => {
   }
 })
 
+router.get('/article', async (ctx) => {
+  const { _id } = ctx.request.query
+  if (_id) {
+    await Article.findById(_id).select('title author content').then(res => {
+      if (!res) {
+        ctx.response.status = 404
+      } else {
+        ctx.response.body = {
+          data: res
+        }
+      }
+    })
+  } else {
+    ctx.response.status = 404
+  }
+})
+
 export const pageLimit = 5
 
 router.get('/articles', async (ctx) => {

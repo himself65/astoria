@@ -7,7 +7,6 @@ import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
 import { regexToken } from '../plugins/userAccess'
-import { UserPermission } from '../utils/shared'
 
 export const timeoutDurationDays = 5
 export const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
@@ -36,10 +35,7 @@ export default class UserController {
       .then(res => {
         debug('/api/user', res)
         return {
-          data: {
-            ...res,
-            level: UserPermission[res.level]
-          }
+          data: res
         }
       })
   }
