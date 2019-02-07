@@ -31,9 +31,10 @@ export const plugin = {
           time = parseInt(regexTimeout.exec(ctx.request.headers['authorization'])[0], 10)
         }
         debug(`matched path: ${to}`, `token: ${token}, timeout: ${time}`)
-        if (Date.parse(Date.toString()) < time) {
+        if (Date.parse(Date.toString()) < time || !token) {
           // timeout
           ctx.user = {
+            name: null,
             level: UserPermission.default
           }
         } else if (token) {
@@ -41,14 +42,15 @@ export const plugin = {
             password: token
           }).lean(true)
             .then(res => {
-              if (isObject(res) && res.token === token) {
+              if (isObject(res) && res.password === token) {
                 ctx.user = {
-                  token: token,
+                  name: res.username,
                   level: res.level
                 }
                 debug(res.username, 'have access:', UserPermission[res.level])
               } else {
                 ctx.user = {
+                  name: null,
                   level: UserPermission.default
                 }
               }

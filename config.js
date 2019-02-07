@@ -2,6 +2,7 @@ const resolve = require('path').resolve
 
 const app = dir => resolve(__dirname, './src', dir)
 const isProd = process.env.NODE_ENV === 'production'
+const staticPath = resolve(__dirname, '../', 'himself65', 'dist')
 
 module.exports = {
   appName: 'himself65',
@@ -9,6 +10,7 @@ module.exports = {
     username: '123456',
     password: '123456'
   },
+  staticPath,
   isProd: isProd,
   port: 3000,
   appPath: {

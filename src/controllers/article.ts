@@ -14,17 +14,6 @@ export default class ArticleController {
     return Article.findById(id).select('author title content').lean(true)
   }
 
-  @Post('/articles')
-  Post (@Body() article: JSON) {
-    return Article.create(article, (err, docs) => {
-      if (err) throw err
-      return {
-        data: docs,
-        message: 'create success.'
-      }
-    })
-  }
-
   @Put('/articles/:id')
   EditOne (@Param('id') id: number, @QueryParams() article) {
     const { author, title, content } = article
