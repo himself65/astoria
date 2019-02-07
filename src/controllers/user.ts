@@ -6,13 +6,8 @@ import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx, Req }
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
-import { regexToken } from '../utils/userAccess'
+import { regexToken } from '../plugins/userAccess'
 import { UserPermission } from '../utils/shared'
-
-interface ILogin {
-  username: string
-  password: string
-}
 
 export const timeoutDurationDays = 5
 export const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'

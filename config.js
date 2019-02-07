@@ -25,6 +25,14 @@ module.exports = {
     port: '27017',
     database: 'astoria'
   },
+  plugins: {
+    'UserAccess': {
+      whiteList: [
+        /^\/api\/login/,
+        /^\/login/
+      ]
+    }
+  },
   repos: [
     '/root/luogu-drawer'
   ]

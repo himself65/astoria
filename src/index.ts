@@ -12,7 +12,6 @@ import * as cors from '@koa/cors'
 import * as logger from 'koa-logger'
 import { useKoaServer } from 'routing-controllers'
 import historyApiFallback from 'koa2-connect-history-api-fallback'
-import userAccess from './utils/userAccess'
 import * as path from 'path'
 
 // controllers
@@ -22,6 +21,7 @@ import registerExample from './utils/registerExample'
 
 // plugin
 import { connectDB } from './utils/database'
+import { loadPlugins } from './loadPlugins'
 
 const app = new Koa()  // Singleton
 
@@ -42,9 +42,7 @@ export const astoria: IAstoria = {
     // app.use(jwt({
     //   secret: privateConfig.secret
     // }))
-    app.use(userAccess({
-      whiteList: [/^\/api\/login/, /^\/login/]
-    }))
+    loadPlugins(app)
     debug('/api views register success!')
     app.use(router.routes())
     app.use(router.allowedMethods())
