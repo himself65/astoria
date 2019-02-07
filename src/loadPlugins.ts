@@ -29,7 +29,7 @@ export function loadPlugins (app) {
         }
       }
       plugin.register(app, config)
-      debug(`register plugin: ${pluginName}`)
+      debug(`Load plugin: ${pluginName}`)
     })
   } catch (e) {
     throw e

@@ -1,12 +1,13 @@
 import * as mongoose from 'mongoose'
 import { debug } from '../'
-import { mongodb } from '../../config.js'
+import { mongodb } from '../../config'
 
 const { port, database } = mongodb
 
 const dbUrl = `mongodb://localhost:${port}/${database}`
 
 export const connectDB = async () => {
+  debug(`mongoDB url: ${dbUrl}`)
   debug('Try to connect Mongoose.')
   await mongoose.connect(dbUrl, {
     useCreateIndex: true,
