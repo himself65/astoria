@@ -6,7 +6,7 @@ module.exports = {
     args: '',
     instances: 1,
     autorestart: true,
-    exec_interpreter: "ts-node",
+    exec_interpreter: 'ts-node',
 
     watch: false,
     max_memory_restart: '1G',

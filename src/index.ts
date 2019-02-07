@@ -4,7 +4,6 @@ import db from 'debug'
 
 export const debug = db('astoria')
 import * as Koa from 'koa'
-import registerExample from './utils/registerExample'
 
 import { loadPlugins } from './loadPlugins'
 
