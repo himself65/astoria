@@ -7,7 +7,7 @@ export const ArticleSchema = new Schema({
   author: { type: String, ref: 'author' },
   title: { type: String, required: true },
   content: { type: String, required: true },
-  createdDate: { type: Date, default: () => Date() }
+  createdDate: { type: Date, default: () => new Date().toUTCString() }
 })
 
 export interface IArticle extends Document {

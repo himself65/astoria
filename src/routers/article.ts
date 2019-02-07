@@ -25,7 +25,7 @@ router.post('/article', async (ctx) => {
   }
 })
 
-export const pageLimit = 2
+export const pageLimit = 5
 
 router.get('/articles', async (ctx) => {
   const { page = 0 } = ctx.request.query
@@ -34,7 +34,7 @@ router.get('/articles', async (ctx) => {
     .skip(page * pageLimit)
     .limit(pageLimit)
     .lean(true)
-    .select('author title content')
+    .select('author title content createdDate')
     .then(res => {
       ctx.response.body = {
         data: res
