@@ -6,6 +6,8 @@ import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx, Req }
 import { User } from '../models/user'
 import { SecureCode } from '../models/secureCode'
 import { ClientID, ClientSecret } from '../../config.private.json'
+import { regexToken } from '../utils/userAccess'
+import { UserPermission } from '../utils/shared'
 
 interface ILogin {
   username: string
@@ -20,13 +22,29 @@ export default class UserController {
 
   @Get('/user')
   async getCurrentUser (@Req() req) {
-    const token = req.headers['authorization']
+    // wtf: https://github.com/typestack/routing-controllers/issues/471
+    const authorization = req.headers['authorization'] || ''
+    let token = null
+    if (regexToken.test(authorization)) {
+      token = regexToken.exec(authorization)[0]
+    }
+    if (!token) {
+      return {
+        data: null
+      }
+    }
+    debug('/api/user', token)
     return User.findOne({
-      token: token
-    }).lean(true)
+      password: token
+    }).select('username nickname level')
+      .lean(true)
       .then(res => {
+        debug('/api/user', res)
         return {
-          data: res
+          data: {
+            ...res,
+            level: UserPermission[res.level]
+          }
         }
       })
   }

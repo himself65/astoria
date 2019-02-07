@@ -20,24 +20,38 @@ export function userAccess ({ whiteList: wl }: IUserAccess): Middleware {
     const matched = regex.test(to)
     const white = whiteList.every(t => RegExp(t).test(to) === false)
     if (matched) debug('matched', to)
-    if (white) debug('whited', to)
+    if (matched && white) debug('whited', to)
     if (matched && white) {
-      const token = regexToken.exec(ctx.request.headers['authorization'])[0]
-      const time = parseInt(regexTimeout.exec(ctx.request.headers['authorization'])[0], 10)
-      debug(`matched path: ${to}`, `token: ${token || 'none'}`)
+      const authorization = ctx.request.headers['authorization'] || ''
+      let token = ''
+      let time = 0
+      if (regexToken.test(authorization)) {
+        token = regexToken.exec(authorization)[0]
+      }
+      if (regexTimeout.test(authorization)) {
+        time = parseInt(regexTimeout.exec(ctx.request.headers['authorization'])[0], 10)
+      }
+      debug(`matched path: ${to}`, `token: ${token}, timeout: ${time}`)
       if (Date.parse(Date.toString()) < time) {
         // timeout
-        ctx.userLevel = UserPermission.default
+        ctx.user = {
+          level: UserPermission.default
+        }
       } else if (token) {
         await User.findOne({
           password: token
         }).lean(true)
           .then(res => {
             if (isObject(res) && res.token === token) {
-              ctx.userLevel = res.level
+              ctx.user = {
+                token: token,
+                level: res.level
+              }
               debug(res.username, 'have access:', UserPermission[res.level])
             } else {
-              ctx.userLevel = UserPermission.default
+              ctx.user = {
+                level: UserPermission.default
+              }
             }
           })
       }
