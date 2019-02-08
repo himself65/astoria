@@ -58,10 +58,28 @@ router.get('/article', async (ctx) => {
   }
 })
 
+router.delete('/article', async (ctx) => {
+  const { _id } = ctx.request.query
+  if (_id && ctx.user.level !== UserPermission.default) {
+    await Article.findByIdAndDelete(_id).then(res => {
+      if (!res) {
+        ctx.response.status = 404
+      } else {
+        ctx.response.body = {
+          message: 'success'
+        }
+      }
+    })
+  } else {
+    ctx.response.status = 400
+  }
+})
+
 export const pageLimit = 5
 
 router.get('/articles', async (ctx) => {
   const { page = 0 } = ctx.request.query
+  const total = await Article.countDocuments({})
   await Article.find()
     .sort('-createdDate')
     .skip(page * pageLimit)
@@ -70,7 +88,8 @@ router.get('/articles', async (ctx) => {
     .select('author title content createdDate')
     .then(res => {
       ctx.response.body = {
-        data: res
+        data: res,
+        total
       }
     })
 })
