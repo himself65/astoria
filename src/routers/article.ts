@@ -58,6 +58,23 @@ router.get('/article', async (ctx) => {
   }
 })
 
+router.delete('/article', async (ctx) => {
+  const { _id } = ctx.request.query
+  if (_id && ctx.user.level !== UserPermission.default) {
+    await Article.findByIdAndDelete(_id).then(res => {
+      if (!res) {
+        ctx.response.status = 404
+      } else {
+        ctx.response.body = {
+          message: 'success'
+        }
+      }
+    })
+  } else {
+    ctx.response.status = 400
+  }
+})
+
 export const pageLimit = 5
 
 router.get('/articles', async (ctx) => {
