@@ -33,6 +33,7 @@ export const plugin = {
         debug(`matched path: ${to}`, `token: ${token}, timeout: ${time}`)
         if (Date.parse(Date.toString()) < time || !token) {
           // timeout
+          ctx.cookies.set('token', '')
           ctx.user = {
             username: null,
             level: UserPermission.default
