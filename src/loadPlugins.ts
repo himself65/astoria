@@ -6,7 +6,7 @@ import * as globalConfig from '../config'
 
 const dir = resolve(__dirname, 'plugins')
 
-export function loadPlugins (app) {
+export async function loadPlugins (app) {
   if (!existsSync(dir)) {
     throw Error(`${dir} not exist.`)
   }
@@ -17,7 +17,7 @@ export function loadPlugins (app) {
     }).sort((a, b) => {
       return a.priority - b.priority
     })
-    plugins.forEach(plugin => {
+    plugins.forEach(async plugin => {
       const pluginName = plugin.name || null
       let config = {
         _global: globalConfig
@@ -28,7 +28,7 @@ export function loadPlugins (app) {
           ...globalConfig.plugins[pluginName]
         }
       }
-      plugin.register(app, config)
+      await plugin.register(app, config)
       debug(`Load plugin: ${pluginName}`)
     })
   } catch (e) {

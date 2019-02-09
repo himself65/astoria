@@ -9,13 +9,9 @@ import { loadPlugins } from './loadPlugins'
 
 const app = new Koa()  // Singleton
 
-interface IAstoria {
-  run (conf): Promise<void>
-}
-
-export const astoria: IAstoria = {
-  async run (conf) {
-    loadPlugins(app)
+export const astoria = {
+  async run () {
+    await loadPlugins(app)
   }
 }
 
