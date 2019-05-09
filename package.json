@@ -46,7 +46,7 @@
     "pm2": "^3.2.4",
     "reflect-metadata": "^0.1.12",
     "routing-controllers": "^0.7.7",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.8.5",
     "ts-node": "^7.0.1",
     "typedi": "^0.8.0",
     "url": "^0.11.0"
