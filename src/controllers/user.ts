@@ -1,23 +1,21 @@
 import axios from 'axios'
 import * as crypto from 'crypto-js'
-import { debug } from '../'
+import { BaseController, Context, get, json, post } from 'daruk'
 import * as qs from 'querystring'
-import { JsonController, Post, Body, Res, Get, QueryParams, Redirect, Ctx, Req } from 'routing-controllers'
-import { User } from '../models/user'
-import { SecureCode } from '../models/secureCode'
+import { debug } from '../'
 import { ClientID, ClientSecret } from '../../config.private.json'
+import { SecureCode } from '../models/secureCode'
+import { User } from '../models/user'
 import { regexToken } from '../plugins/userAccess'
 
 export const timeoutDurationDays = 5
 export const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
 
-@JsonController()
-export default class UserController {
-
-  @Get('/user')
-  async getCurrentUser (@Req() req) {
-    // wtf: https://github.com/typestack/routing-controllers/issues/471
-    const authorization = req.headers['authorization'] || ''
+export default class UserController extends BaseController {
+  @get('/user')
+  @json()
+  async getCurrentUser (ctx: Context) {
+    const authorization = ctx.req.headers['authorization'] || ''
     let token = null
     if (regexToken.test(authorization)) {
       token = regexToken.exec(authorization)[0]
@@ -40,11 +38,10 @@ export default class UserController {
       })
   }
 
-  @Post('/login')
-  async login (
-    @Ctx() ctx,
-    @Body() body,
-    @Res() response) {
+  @post('/login')
+  @json()
+  async login (ctx: Context) {
+    const body = ctx.body
     debug(body)
     const { username, password } = body
     if (!username || !password) {
@@ -71,25 +68,20 @@ export default class UserController {
       }
     })
   }
-
-  @Get('/logout')
-  @Redirect('/')
-  async logout (
-    @Res() res) {
-    const token = res.headers['authorization']
+  async logout (ctx: Context) {
+    const token = ctx.request.headers['authorization']
     await User.findOneAndUpdate(
       { token: token },
       { token: '' })
       .then(res => {
         console.log(arguments)
       })
-
+    ctx.redirect('/')
   }
 
-  // todo
-  @Get('/login/auth/github')
-  @Redirect('/')
-  async loginWithGithub (@Body() body, @Ctx() ctx) {
+    // todo
+  @get('/login/auth/github')
+  async loginWithGithub (ctx: Context) {
     const date = Date.parse(new Date().toUTCString())
     return SecureCode.create({
       content: date
@@ -107,10 +99,10 @@ export default class UserController {
     })
   }
 
-  @Get('/login/auth/github/callback')
-  @Redirect('/')
-  redirectUrl (@Res() response, @QueryParams() query) {
-    const { code, state } = query
+  @get('/login/auth/github/callback')
+  // @redirect('/')
+  redirectUrl (ctx: Context) {
+    const { code, state } = ctx.query
     debug(code, state)
     const path = 'https://github.com/login/oauth/access_token'
     const params = {
@@ -123,7 +115,7 @@ export default class UserController {
     }).then(async docs => {
       if (!docs) {
         // 找不到保存到数据库的code
-        response.statusCode = 400
+        ctx.status = 400
         return {
           error: '找不到code，请重试'
         }

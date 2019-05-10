@@ -23,7 +23,8 @@
     "no-unused-variable": false,
     "no-invalid-this": false,
     "restrict-plus-operands": false,
-    "no-useless-cast": false
+    "no-useless-cast": false,
+    "ordered-imports": true
   },
   "rulesDirectory": []
 }

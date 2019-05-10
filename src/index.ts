@@ -1,18 +1,15 @@
-import 'reflect-metadata'
 // @ts-ignore
 import db from 'debug'
+import 'reflect-metadata'
 
 export const debug = db('astoria')
-import * as Koa from 'koa'
+import { Daruk } from 'daruk'
 
 import { loadPlugins } from './loadPlugins'
 
-const app = new Koa()  // Singleton
-
-export const astoria = {
-  async run () {
-    await loadPlugins(app)
-  }
-}
+const astoria = new Daruk('astoria',{
+  rootPath: __dirname,
+  debug: process.env.NODE_ENV === 'dev'
+})
 
 export default astoria
