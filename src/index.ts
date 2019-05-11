@@ -1,15 +1,10 @@
 // @ts-ignore
+import { Daruk } from 'daruk'
 import db from 'debug'
 import 'reflect-metadata'
 
 export const debug = db('astoria')
-import { Daruk } from 'daruk'
 
-import { loadPlugins } from './loadPlugins'
-
-const astoria = new Daruk('astoria',{
-  rootPath: __dirname,
-  debug: process.env.NODE_ENV === 'dev'
-})
-
-export default astoria
+export default class Astoria extends Daruk {
+  // noting to extends
+}
