@@ -1,12 +1,11 @@
+import { Daruk } from 'daruk'
 import { existsSync, readdirSync } from 'fs'
 import { resolve } from 'path'
 import { debug } from './'
 
-import * as globalConfig from '../config'
-
 const dir = resolve(__dirname, 'plugins')
 
-export async function loadPlugins (app) {
+export async function loadPlugins (app: Daruk) {
   if (!existsSync(dir)) {
     throw Error(`${dir} not exist.`)
   }
@@ -19,16 +18,7 @@ export async function loadPlugins (app) {
     })
     plugins.forEach(async plugin => {
       const pluginName = plugin.name || null
-      let config = {
-        _global: globalConfig
-      }
-      if (pluginName) {
-        config = {
-          ...config,
-          ...globalConfig.plugins[pluginName]
-        }
-      }
-      await plugin.register(app, config)
+      await plugin.register(app)
       debug(`Load plugin: ${pluginName}`)
     })
   } catch (e) {

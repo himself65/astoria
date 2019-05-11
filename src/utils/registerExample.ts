@@ -1,8 +1,8 @@
-import * as Router from 'koa-router'
-import { regex } from './requireContents'
-import { debug } from '../'
 import { readdirSync } from 'fs'
+import * as Router from 'koa-router'
 import { resolve } from 'path'
+import { debug } from '../'
+import { regex } from './requireContents'
 
 export function registerExample () {
   const router = new Router()

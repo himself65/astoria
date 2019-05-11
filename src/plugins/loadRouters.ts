@@ -1,8 +1,8 @@
-import * as KoaRouter from 'koa-router'
-import registerExample from '../utils/registerExample'
-import { resolve } from 'path'
 import { readdirSync } from 'fs'
+import * as KoaRouter from 'koa-router'
+import { resolve } from 'path'
 import { debug } from '../index'
+import registerExample from '../utils/registerExample'
 
 export const routersDir = resolve(__dirname, '../', 'routers')
 

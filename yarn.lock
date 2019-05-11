@@ -501,6 +501,11 @@
   resolved "http://registry.npm.taobao.org/@types/http-assert/download/@types/http-assert-1.4.0.tgz#41d173466e396e99a14d75f7160cc997f2f9ed8b"
   integrity sha1-QdFzRm45bpmhTXX3FgzJl/L57Ys=
 
+"@types/is@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.npm.taobao.org/@types/is/download/@types/is-0.0.21.tgz#1f4b0afe428991564abbd890844eba2458bc83e6"
+  integrity sha1-H0sK/kKJkVZKu9iQhE66JFi8g+Y=
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/@types/istanbul-lib-coverage/download/@types/istanbul-lib-coverage-2.0.1.tgz#42995b446db9a48a11a07ec083499a860e9138ff"
@@ -1768,10 +1773,10 @@ daruk-request-id@^0.1.0:
   dependencies:
     uuid "^3.3.2"
 
-daruk@^0.5.31:
-  version "0.5.31"
-  resolved "https://registry.npm.taobao.org/daruk/download/daruk-0.5.31.tgz#f01f79deb3b4d50adc5be79ca6c13ef1e303dc15"
-  integrity sha1-8B953rO01QrcW+ecpsE+8eMD3BU=
+daruk@^0.5.33:
+  version "0.5.33"
+  resolved "https://registry.npm.taobao.org/daruk/download/daruk-0.5.33.tgz#84d592fd72669c14095924c3b2f8110b4e5d2e83"
+  integrity sha1-hNWS/XJmnBQJWSTDsvgRC05dLoM=
   dependencies:
     "@types/koa" "^2.0.46"
     "@types/koa-router" "^7.0.37"

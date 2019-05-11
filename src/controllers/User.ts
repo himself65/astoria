@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as crypto from 'crypto-js'
-import { BaseController, Context, get, json, post } from 'daruk'
+import { BaseController, Context, get, json, post, redirect } from 'daruk'
 import * as qs from 'querystring'
 import { debug } from '../'
 import { ClientID, ClientSecret } from '../../config.private.json'
@@ -14,7 +14,7 @@ export const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
 export default class UserController extends BaseController {
   @get('/user')
   @json()
-  async getCurrentUser (ctx: Context) {
+  async getUser (ctx: Context) {
     const authorization = ctx.req.headers['authorization'] || ''
     let token = null
     if (regexToken.test(authorization)) {
@@ -68,6 +68,7 @@ export default class UserController extends BaseController {
       }
     })
   }
+
   async logout (ctx: Context) {
     const token = ctx.request.headers['authorization']
     await User.findOneAndUpdate(
@@ -79,7 +80,7 @@ export default class UserController extends BaseController {
     ctx.redirect('/')
   }
 
-    // todo
+  // todo
   @get('/login/auth/github')
   async loginWithGithub (ctx: Context) {
     const date = Date.parse(new Date().toUTCString())
@@ -100,7 +101,7 @@ export default class UserController extends BaseController {
   }
 
   @get('/login/auth/github/callback')
-  // @redirect('/')
+  @redirect('/')
   redirectUrl (ctx: Context) {
     const { code, state } = ctx.query
     debug(code, state)
@@ -151,5 +152,20 @@ export default class UserController extends BaseController {
         }
       }
     })
+  }
+
+  @get('/api/user/current')
+  getCurrentUser (ctx: Context, next) {
+    const { username } = ctx.user
+    ctx.response.body = await User.findOne({
+      username: username
+    }).select('username nickname level')
+      .lean(true)
+      .then(res => {
+        debug('/api/user', res)
+        return {
+          data: res
+        }
+      })
   }
 }

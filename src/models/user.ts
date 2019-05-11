@@ -1,8 +1,8 @@
 import * as crypto from 'crypto-js'
+import { Document } from 'mongoose'
+import { debug } from '../'
 import mongoose from '../utils/database'
 import { UserPermission } from '../utils/shared'
-import { debug } from '../'
-import { Document } from 'mongoose'
 
 const Schema = mongoose.Schema
 
@@ -56,5 +56,5 @@ export async function create () {
     nickname: '扩散性百万甜面包',
     password: '123456',
     level: UserPermission.root
-  }).then(debug('created user success.'))
+  }).then(() => debug('created user success.'))
 }

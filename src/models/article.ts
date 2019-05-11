@@ -1,5 +1,5 @@
-import mongoose from '../utils/database'
 import { Document } from 'mongoose'
+import mongoose from '../utils/database'
 
 const Schema = mongoose.Schema
 

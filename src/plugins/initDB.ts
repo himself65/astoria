@@ -1,3 +1,4 @@
+import { Daruk } from 'daruk'
 import { debug } from '../'
 import { User } from '../models/user'
 import { UserPermission } from '../utils/shared'
@@ -5,16 +6,17 @@ import { UserPermission } from '../utils/shared'
 export const plugin = {
   name: 'InitDB',
   priority: 0,
-  register: (_, config) => {
-    const { root } = config._global
+  register: async (daruk: Daruk) => {
+    // @ts-ignore
+    const { root } = daruk.config
     const { username, password } = root
     debug('Root Username:', username, 'password:', password)
-    User.findOne({ username }, {}, (err, res) => {
+    await User.findOne({ username }, {}, async (err, res) => {
       if (err) {
         throw err
       } else if (!res) {
         debug(username, 'not exist')
-        User.create({
+        await User.create({
           username, password,
           nickname: username,
           level: UserPermission.root

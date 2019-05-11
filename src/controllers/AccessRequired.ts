@@ -1,0 +1,24 @@
+import { all, BaseController, Context } from 'daruk'
+import { debug } from '../index'
+import { UserPermission } from '../utils/shared'
+
+export default class AccessRequiredController extends BaseController {
+  // @ts-ignore
+  // fixme: https://github.com/daruk-framework/daruk/issues/35
+  @all(/^\/(backstage|new)/)
+  async accessRequired (ctx: Context, next) {
+    if (ctx.user.level === UserPermission.default) {
+      ctx.response.redirect('/error')
+    }
+    await next()
+  }
+
+  @all('/user')
+  async loginRequired (ctx, next) {
+    if (ctx.user.username === null) {
+      debug(ctx.user)
+      ctx.response.redirect('/error')
+    }
+    await next()
+  }
+}

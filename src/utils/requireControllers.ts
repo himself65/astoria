@@ -1,6 +1,6 @@
-import { readdirSync, existsSync } from 'fs'
-import { debug } from '../'
+import { existsSync, readdirSync } from 'fs'
 import { join } from 'path'
+import { debug } from '../'
 import { regex } from './requireContents'
 
 export function requireControllers (dir: string): Function[] {
