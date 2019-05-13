@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose'
 import { debug } from '../'
-import { mongodb } from '../../config'
+import { config } from '../config'
 
-const { port, database } = mongodb
+const { port, database } = config.mongodb
 
 const dbUrl = `mongodb://localhost:${port}/${database}`
 

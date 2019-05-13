@@ -1,7 +1,7 @@
 import * as Koa from 'koa'
 import { isObject } from 'lodash'
 import { debug } from '../index'
-import { IUser, User } from '../models/user'
+import { IUser, UserModel } from '../models/user'
 import { UserPermission } from '../utils/shared'
 
 export const regex = /^\/?[^.]+$/

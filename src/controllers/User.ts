@@ -5,13 +5,13 @@ import * as qs from 'querystring'
 import { debug } from '../'
 import { ClientID, ClientSecret } from '../../config.private.json'
 import { SecureCode } from '../models/secureCode'
-import { User } from '../models/user'
+import { UserModel } from '../models/user'
 import { regexToken } from '../plugins/userAccess'
 
 export const timeoutDurationDays = 5
 export const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
 
-export default class UserController extends BaseController {
+export default class User extends BaseController {
   @get('/user')
   @json()
   async getUser (ctx: Context) {
@@ -26,7 +26,7 @@ export default class UserController extends BaseController {
       }
     }
     debug('/api/user', token)
-    return User.findOne({
+    return UserModel.findOne({
       password: token
     }).select('username nickname level')
       .lean(true)
@@ -47,7 +47,7 @@ export default class UserController extends BaseController {
     if (!username || !password) {
       return '/error'
     }
-    return User.findOne({
+    return UserModel.findOne({
       username: username
     }).lean(true).then(async res => {
       const pw = crypto.PBKDF2(password, res.sale).toString()
@@ -71,7 +71,7 @@ export default class UserController extends BaseController {
 
   async logout (ctx: Context) {
     const token = ctx.request.headers['authorization']
-    await User.findOneAndUpdate(
+    await UserModel.findOneAndUpdate(
       { token: token },
       { token: '' })
       .then(res => {
@@ -132,7 +132,7 @@ export default class UserController extends BaseController {
           })
           return axios.get('https://api.github.com/user?access_token=' + token).then(async res => {
             const { id } = res.data
-            await User.findOne({
+            await UserModel.findOne({
               githubID: parseInt(id, 10)  // find user with GitHubID
             }).then(res => {
               debug(res)
@@ -155,9 +155,9 @@ export default class UserController extends BaseController {
   }
 
   @get('/api/user/current')
-  getCurrentUser (ctx: Context, next) {
+  async getCurrentUser (ctx: Context, next) {
     const { username } = ctx.user
-    ctx.response.body = await User.findOne({
+    ctx.response.body = await UserModel.findOne({
       username: username
     }).select('username nickname level')
       .lean(true)

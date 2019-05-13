@@ -1,6 +1,6 @@
 import { Daruk } from 'daruk'
 import { debug } from '../'
-import { User } from '../models/user'
+import { UserModel } from '../models/user'
 import { UserPermission } from '../utils/shared'
 
 export const plugin = {
@@ -11,12 +11,12 @@ export const plugin = {
     const { root } = daruk.config
     const { username, password } = root
     debug('Root Username:', username, 'password:', password)
-    await User.findOne({ username }, {}, async (err, res) => {
+    await UserModel.findOne({ username }, {}, async (err, res) => {
       if (err) {
         throw err
       } else if (!res) {
         debug(username, 'not exist')
-        await User.create({
+        await UserModel.create({
           username, password,
           nickname: username,
           level: UserPermission.root

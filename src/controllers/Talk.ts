@@ -1,15 +1,15 @@
 import { BaseController, Context, get,json } from 'daruk'
-import { Talk } from '../models/talk'
+import { TalkModel } from '../models/talk'
 
 const pageLimit = 10
 
-export default class TalkController extends BaseController {
+export default class Talk extends BaseController {
 
   @get('/talks')
   @json()
   async getAll (ctx: Context) {
     const { page = 0 } = ctx.query
-    return Talk.find()
+    return TalkModel.find()
       .skip(page * pageLimit)
       .limit(pageLimit)
       .lean(true)

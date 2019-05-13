@@ -8,4 +8,4 @@ export const TalkSchema = new Schema({
   like: { type: Number, default: 0 }
 })
 
-export const Talk = mongoose.model('talk', TalkSchema)
+export const TalkModel = mongoose.model('talk', TalkSchema)

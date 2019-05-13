@@ -680,6 +680,11 @@
   resolved "https://registry.npm.taobao.org/@types/stack-utils/download/@types/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha1-CoUdO9lkmPolwzq3J47TvWXwbD4=
 
+"@types/url-join@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/@types/url-join/download/@types/url-join-4.0.0.tgz#72eff71648a429c7d4acf94e03780e06671369bd"
+  integrity sha1-cu/3FkikKcfUrPlOA3gOBmcTab0=
+
 "@types/yargs@^12.0.2", "@types/yargs@^12.0.9":
   version "12.0.12"
   resolved "https://registry.npm.taobao.org/@types/yargs/download/@types/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
@@ -1773,14 +1778,15 @@ daruk-request-id@^0.1.0:
   dependencies:
     uuid "^3.3.2"
 
-daruk@^0.5.33:
-  version "0.5.33"
-  resolved "https://registry.npm.taobao.org/daruk/download/daruk-0.5.33.tgz#84d592fd72669c14095924c3b2f8110b4e5d2e83"
-  integrity sha1-hNWS/XJmnBQJWSTDsvgRC05dLoM=
+daruk@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.npm.taobao.org/daruk/download/daruk-0.5.4.tgz#33de86dbd14b27aa47a7ec2dddbd975686ea3eb8"
+  integrity sha1-M96G29FLJ6pHp+wt3b2XVobqPrg=
   dependencies:
     "@types/koa" "^2.0.46"
     "@types/koa-router" "^7.0.37"
     "@types/node" "^10.12.18"
+    "@types/url-join" "^4.0.0"
     basic-auth "^2.0.1"
     chalk "^2.4.1"
     convert-hrtime "^2.0.0"
@@ -1795,6 +1801,7 @@ daruk@^0.5.33:
     object-assign-deep "^0.4.0"
     reflect-metadata "^0.1.13"
     upath "^1.1.2"
+    url-join "^4.0.0"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -4116,6 +4123,11 @@ koa-convert@^1.2.0:
     co "^4.6.0"
     koa-compose "^3.0.0"
 
+koa-handle-error@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.npm.taobao.org/koa-handle-error/download/koa-handle-error-0.0.5.tgz#d1b6d3b6c41ecc26085cd75ef8e2107ba3402fff"
+  integrity sha1-0bbTtsQezCYIXNde+OIQe6NAL/8=
+
 koa-is-json@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/koa-is-json/download/koa-is-json-1.0.0.tgz#273c07edcdcb8df6a2c1ab7d59ee76491451ec14"
@@ -4132,7 +4144,7 @@ koa-jwt@^3.5.1:
 
 koa-logger@^3.2.0:
   version "3.2.0"
-  resolved "http://registry.npm.taobao.org/koa-logger/download/koa-logger-3.2.0.tgz#8aef64d8b848fb6253a9b31aa708d0e05141f0e6"
+  resolved "https://registry.npm.taobao.org/koa-logger/download/koa-logger-3.2.0.tgz#8aef64d8b848fb6253a9b31aa708d0e05141f0e6"
   integrity sha1-iu9k2LhI+2JTqbMapwjQ4FFB8OY=
   dependencies:
     bytes "^2.5.0"
@@ -6989,6 +7001,11 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "http://registry.npm.taobao.org/urix/download/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
+
+url-join@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/url-join/download/url-join-4.0.0.tgz#4d3340e807d3773bda9991f8305acdcc2a665d2a"
+  integrity sha1-TTNA6AfTdzvamZH4MFrNzCpmXSo=
 
 url-parse-lax@^1.0.0:
   version "1.0.0"

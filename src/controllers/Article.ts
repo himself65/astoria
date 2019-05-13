@@ -1,12 +1,12 @@
 import { BaseController, Context, del, get, json, post, prefix } from 'daruk'
 import { debug } from '../'
-import { Article } from '../models/article'
+import { ArticleModel } from '../models/article'
 import { UserPermission } from '../utils/shared'
 
 export const pageLimit = 5
 
 @prefix('/api')
-export default class ArticleController extends BaseController {
+export default class Article extends BaseController {
   public pageLimit = pageLimit
 
   @post('/article')
@@ -16,20 +16,20 @@ export default class ArticleController extends BaseController {
     debug(username, ctx.path, ctx.request.body)
     if (content && title && username) {
       if (_id) {
-        await Article.findById(_id).then(async (doc) => {
+        await ArticleModel.findById(_id).then(async (doc) => {
           debug(doc)
           if (!doc) {
             ctx.response.status = 404
           } else {
             if (doc.author === ctx.user.username ||
               ctx.user.level !== UserPermission.default) {
-              await Article.findByIdAndUpdate(_id, { content, title })
+              await ArticleModel.findByIdAndUpdate(_id, { content, title })
             }
             ctx.response.status = 200
           }
         })
       } else {
-        await Article.create({
+        await ArticleModel.create({
           author: username,
           content,
           title
@@ -51,7 +51,7 @@ export default class ArticleController extends BaseController {
   async getArticle (ctx: Context) {
     const { _id } = ctx.request.query
     if (_id) {
-      return Article.findById(_id).select('title author content').then(res => {
+      return ArticleModel.findById(_id).select('title author content').then(res => {
         if (!res) {
           ctx.response.status = 404
         } else {
@@ -72,7 +72,7 @@ export default class ArticleController extends BaseController {
   async deleteArticle (ctx) {
     const { _id } = ctx.request.query
     if (_id && ctx.user.level !== UserPermission.default) {
-      await Article.findByIdAndDelete(_id).then(res => {
+      await ArticleModel.findByIdAndDelete(_id).then(res => {
         if (!res) {
           ctx.response.status = 404
         } else {
@@ -89,8 +89,8 @@ export default class ArticleController extends BaseController {
   @get('/articles')
   async getArticles (ctx: Context) {
     const { page = 0 } = ctx.request.query
-    const total = await Article.countDocuments({})
-    await Article.find()
+    const total = await ArticleModel.countDocuments({})
+    await ArticleModel.find()
       .sort('-createdDate')
       .skip(page * this.pageLimit)
       .limit(this.pageLimit)

@@ -48,10 +48,10 @@ UserSchema.pre<IUser>('save', function (next) {
   next()
 })
 
-export const User = mongoose.model<IUser>('User', UserSchema)
+export const UserModel = mongoose.model<IUser>('UserModel', UserSchema)
 
 export async function create () {
-  await User.create({
+  await UserModel.create({
     username: 'himself65',
     nickname: '扩散性百万甜面包',
     password: '123456',

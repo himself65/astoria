@@ -17,10 +17,10 @@ export interface IArticle extends Document {
   createdDate: Date
 }
 
-export const Article = mongoose.model<IArticle>('Article', ArticleSchema)
+export const ArticleModel = mongoose.model<IArticle>('ArticleModel', ArticleSchema)
 
 export async function create () {
-  await Article.create({
+  await ArticleModel.create({
     author: 'himself65',
     title: 'test',
     content: 'none'

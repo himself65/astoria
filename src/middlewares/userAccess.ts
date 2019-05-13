@@ -1,7 +1,7 @@
 import { Context, Daruk } from 'daruk'
 import is = require('is')
 import { debug } from '../index'
-import { IUser, User } from '../models/user'
+import { IUser, UserModel } from '../models/user'
 import { regex, regexTimeout, regexToken } from '../plugins/userAccess'
 import { UserPermission } from '../utils/shared'
 
@@ -33,7 +33,7 @@ export default function (daruk: Daruk) {
           level: UserPermission.default
         }
       } else if (token) {
-        await User.findOne({
+        await UserModel.findOne({
           password: token
         }).lean(true)
           .then((res: IUser) => {
