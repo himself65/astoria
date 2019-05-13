@@ -1,8 +1,7 @@
 const resolve = require('path').resolve
 
-const app = dir => resolve(__dirname, './src', dir)
 const isProd = process.env.NODE_ENV === 'production'
-const staticPath = resolve(__dirname, '../', '../', 'himself65', 'dist')
+const staticPath = resolve('../../../himself65', 'dist')
 
 export const config = {
   appName: 'himself65',
@@ -13,9 +12,6 @@ export const config = {
   staticPath,
   isProd: isProd,
   port: 3000,
-  appPath: {
-    controllers: app('controllers')
-  },
   filePath: {
     distPath: '/root/himself65/dist'
   },

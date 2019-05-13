@@ -21,7 +21,7 @@
     "@koa/cors": "3.0.0",
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
-    "daruk": "^0.5.4",
+    "daruk": "^0.5.5",
     "fs-readfile-promise": "^3.0.1",
     "fs-writefile-promise": "^3.0.2",
     "is": "^3.3.0",

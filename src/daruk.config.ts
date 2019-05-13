@@ -11,11 +11,10 @@ export default function (daruk: Daruk) {
   const darukConfig: any = {}
 
   darukConfig.middlewareOrder = [
+    'koa-static',
     'koa-handle-error',
     'koa2-connect-history-api-fallback',
-    'koa-logger',
     'koa-body',
-    'koa-static',
     'koa-bodyparser'
   ]
   darukConfig.middleware = {
@@ -24,9 +23,6 @@ export default function (daruk: Daruk) {
       return mid((err: any) => {
         console.log(err)
       })
-    },
-    'koa-logger': (mid: Function) => {
-      return mid()
     },
     'koa2-connect-history-api-fallback': (mid: Function) => {
       return mid({

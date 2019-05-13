@@ -1778,10 +1778,10 @@ daruk-request-id@^0.1.0:
   dependencies:
     uuid "^3.3.2"
 
-daruk@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.npm.taobao.org/daruk/download/daruk-0.5.4.tgz#33de86dbd14b27aa47a7ec2dddbd975686ea3eb8"
-  integrity sha1-M96G29FLJ6pHp+wt3b2XVobqPrg=
+daruk@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.npm.taobao.org/daruk/download/daruk-0.5.5.tgz#9dacd3614ed52276bafb42f496fe0d8d4fbe9be2"
+  integrity sha1-nazTYU7VIna6+0L0lv4NjU++m+I=
   dependencies:
     "@types/koa" "^2.0.46"
     "@types/koa-router" "^7.0.37"
