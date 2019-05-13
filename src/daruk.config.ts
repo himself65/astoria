@@ -11,9 +11,9 @@ export default function (daruk: Daruk) {
   const darukConfig: any = {}
 
   darukConfig.middlewareOrder = [
-    'koa-static',
     'koa-handle-error',
     'koa2-connect-history-api-fallback',
+    'koa-static',
     'koa-body',
     'koa-bodyparser'
   ]

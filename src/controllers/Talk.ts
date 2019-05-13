@@ -1,8 +1,9 @@
-import { BaseController, Context, get,json } from 'daruk'
+import { BaseController, Context, get, json, prefix } from 'daruk'
 import { TalkModel } from '../models/talk'
 
 const pageLimit = 10
 
+@prefix('/api')
 export default class Talk extends BaseController {
 
   @get('/talks')
