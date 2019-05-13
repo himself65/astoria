@@ -5,7 +5,6 @@ import { Daruk } from 'daruk'
 import path = require('path')
 
 export default function (daruk: Daruk) {
-  // @ts-ignore
   const { staticPath } = daruk.config
 
   const darukConfig: any = {}
@@ -43,11 +42,17 @@ export default function (daruk: Daruk) {
       return mid()
     }
   }
-  darukConfig.util = {
-    // todo
-  }
+  darukConfig.util = {}
   darukConfig.timer = {
-    // todo
+    testTimer: {
+      cronTime: '* * * * * *', // 一秒一次
+      onTick: function onTick (this: any) {
+        this.stop() // 主动停止定时器
+      },
+      onComplete: function () {
+        // todo
+      }
+    }
   }
 
   return darukConfig

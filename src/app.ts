@@ -1,4 +1,4 @@
-import Astoria from './src'
+import Astoria from './'
 
 const path = require('path')
 const debug = require('debug')('astoria')
