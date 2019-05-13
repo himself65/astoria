@@ -6,7 +6,7 @@ import { regex, regexTimeout, regexToken } from '../plugins/userAccess'
 import { UserPermission } from '../utils/shared'
 
 export default function (daruk: Daruk) {
-  return async function (ctx: Context, next) {
+  return async function (ctx: Context, next: Function) {
     // @ts-ignore
     const whiteList = daruk.config.whiteList || []
     const to = ctx.request.url
