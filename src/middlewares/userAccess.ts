@@ -2,8 +2,8 @@ import { Context, Daruk } from 'daruk'
 import is = require('is')
 import { debug } from '../index'
 import { IUser, UserModel } from '../models/user'
-import { regex, regexTimeout, regexToken } from '../plugins/userAccess'
 import { UserPermission } from '../utils/shared'
+import { regex, regexTimeout, regexToken } from '../utils/userAccess'
 
 export default function (daruk: Daruk) {
   return async function (ctx: Context, next: Function) {

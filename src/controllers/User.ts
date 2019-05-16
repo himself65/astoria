@@ -6,7 +6,7 @@ import { debug } from '../'
 import { ClientID, ClientSecret } from '../../config.private.json'
 import { SecureCode } from '../models/secureCode'
 import { UserModel } from '../models/user'
-import { regexToken } from '../plugins/userAccess'
+import { regexToken } from '../utils/userAccess'
 
 export const timeoutDurationDays = 5
 export const GithubAuthorizeUrl = 'https://github.com/login/oauth/authorize?'
