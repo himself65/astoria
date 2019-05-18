@@ -683,6 +683,13 @@
   resolved "https://registry.npm.taobao.org/@types/url-join/download/@types/url-join-4.0.0.tgz#72eff71648a429c7d4acf94e03780e06671369bd"
   integrity sha1-cu/3FkikKcfUrPlOA3gOBmcTab0=
 
+"@types/uuid@^3.4.4":
+  version "3.4.4"
+  resolved "https://registry.npm.taobao.org/@types/uuid/download/@types/uuid-3.4.4.tgz#7af69360fa65ef0decb41fd150bf4ca5c0cefdf5"
+  integrity sha1-evaTYPpl7w3stB/RUL9MpcDO/fU=
+  dependencies:
+    "@types/node" "*"
+
 "@types/yargs@^12.0.2", "@types/yargs@^12.0.9":
   version "12.0.12"
   resolved "https://registry.npm.taobao.org/@types/yargs/download/@types/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
@@ -1050,13 +1057,6 @@ base@^0.11.1:
     isobject "^3.0.1"
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
-
-basic-auth@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npm.taobao.org/basic-auth/download/basic-auth-2.0.1.tgz#b998279bf47ce38344b4f3cf916d4679bbf51e3a"
-  integrity sha1-uZgnm/R844NEtPPPkW1Gebv1Hjo=
-  dependencies:
-    safe-buffer "5.1.2"
 
 bcrypt-pbkdf@^1.0.0:
   version "1.0.2"
@@ -1692,10 +1692,12 @@ culvert@^0.1.2:
   resolved "https://registry.npm.taobao.org/culvert/download/culvert-0.1.2.tgz#9502f5f0154a2d5a22a023e79f71cc936fa6ef6f"
   integrity sha1-lQL18BVKLVoioCPnn3HMk2+m728=
 
-daruk-exit-hook@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.npm.taobao.org/daruk-exit-hook/download/daruk-exit-hook-0.2.0.tgz#e5a56efab2afe92cbf08d8d51cda484542fd5565"
-  integrity sha1-5aVu+rKv6Sy/CNjVHNpIRUL9VWU=
+daruk-exit-hook@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npm.taobao.org/daruk-exit-hook/download/daruk-exit-hook-0.3.0.tgz#5377a90a0e188564146037f62cf61d71ebf42c8c"
+  integrity sha1-U3epCg4YhWQUYDf2LPYdcev0LIw=
+  dependencies:
+    "@types/node" "^12.0.0"
 
 daruk-logger@^1.9.1:
   version "1.9.1"
@@ -1707,32 +1709,33 @@ daruk-logger@^1.9.1:
     prettyjson "^1.2.1"
     winston "^3.0.0"
 
-daruk-request-id@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npm.taobao.org/daruk-request-id/download/daruk-request-id-0.1.0.tgz#ae48a8acc4a2e8d4e42168b159b8d23875eeaf04"
-  integrity sha1-rkiorMSi6NTkIWixWbjSOHXurwQ=
+daruk-request-id@0.4.3:
+  version "0.4.3"
+  resolved "https://registry.npm.taobao.org/daruk-request-id/download/daruk-request-id-0.4.3.tgz#431a4b0e66c09537b317a671da15ff6c4d3168d9"
+  integrity sha1-QxpLDmbAlTezF6Zx2hX/bE0xaNk=
   dependencies:
+    "@types/uuid" "^3.4.4"
     uuid "^3.3.2"
 
-daruk@^0.5.5:
-  version "0.5.5"
-  resolved "https://registry.npm.taobao.org/daruk/download/daruk-0.5.5.tgz#9dacd3614ed52276bafb42f496fe0d8d4fbe9be2"
-  integrity sha1-nazTYU7VIna6+0L0lv4NjU++m+I=
+daruk@^0.5.7:
+  version "0.5.7"
+  resolved "https://registry.npm.taobao.org/daruk/download/daruk-0.5.7.tgz#59708cbeb289b4e380ac04cd13c5c0c7bc8288aa"
+  integrity sha1-WXCMvrKJtOOArATNE8XAx7yCiKo=
   dependencies:
     "@types/koa" "^2.0.46"
     "@types/koa-router" "^7.0.37"
     "@types/node" "^10.12.18"
     "@types/url-join" "^4.0.0"
-    basic-auth "^2.0.1"
     chalk "^2.4.1"
     convert-hrtime "^2.0.0"
     cron "^1.4.1"
-    daruk-exit-hook "^0.2.0"
+    daruk-exit-hook "^0.3.0"
     daruk-logger "^1.9.1"
-    daruk-request-id "^0.1.0"
+    daruk-request-id "0.4.3"
     http-server-shutdown "^1.1.2"
     is "^3.3.0"
     koa "^2.5.2"
+    koa-body "^4.1.0"
     koa-router "^7.4.0"
     object-assign-deep "^0.4.0"
     reflect-metadata "^0.1.13"

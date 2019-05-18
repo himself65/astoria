@@ -1,6 +1,3 @@
-/**
- * Daruk 配置
- */
 import { Daruk } from 'daruk'
 import path = require('path')
 

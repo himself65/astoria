@@ -3,7 +3,7 @@ const resolve = require('path').resolve
 const isProd = process.env.NODE_ENV === 'production'
 const staticPath = resolve('../../../himself65', 'dist')
 
-export const config = {
+module.exports = {
   appName: 'himself65',
   root: {
     username: 'himself65',
@@ -34,10 +34,4 @@ export const config = {
   repos: [
     '/root/luogu-drawer'
   ]
-}
-
-export default function () {
-  return {
-    ...config
-  }
 }
