@@ -3,14 +3,14 @@ import path = require('path')
 
 export default function (daruk: Daruk) {
   const { staticPath } = daruk.config
-  console.log(staticPath)
 
   const darukConfig: any = {}
 
   darukConfig.middlewareOrder = [
     'koa-handle-error',
     'koa2-connect-history-api-fallback',
-    'koa-static'
+    'koa-static',
+    'koa-daruk-mid'
   ]
   darukConfig.middleware = {
     // https://github.com/axross/koa-handle-error 必须第一个位置

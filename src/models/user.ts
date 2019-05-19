@@ -1,8 +1,10 @@
 import * as crypto from 'crypto-js'
-import { Document } from 'mongoose'
 import * as mongoose from 'mongoose'
 import { debug } from '../'
 import { UserPermission } from '../utils/shared'
+import { IQuery } from './'
+
+type Document = mongoose.Document
 
 const Schema = mongoose.Schema
 
@@ -43,18 +45,20 @@ export interface IUser extends Document {
 
 UserSchema.pre<IUser>('save', function (next) {
   if (this.isNew) {
-    this.password = crypto.PBKDF2(this.password as string, this.sale)
+    this.password = crypto.PBKDF2(this.password.toString(), this.sale)
   }
   next()
 })
 
 export const UserModel = mongoose.model<IUser>('UserModel', UserSchema)
+export default UserModel
 
-export async function create () {
+export async function createExample () {
   await UserModel.create({
     username: 'himself65',
     nickname: '扩散性百万甜面包',
     password: '123456',
     level: UserPermission.root
-  }).then(() => debug('created user success.'))
+  }).then(() => debug('create user success'))
+    .catch(() => debug('create user fail'))
 }

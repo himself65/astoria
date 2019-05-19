@@ -18,6 +18,7 @@ export interface IArticle extends Document {
 }
 
 export const ArticleModel = mongoose.model<IArticle>('ArticleModel', ArticleSchema)
+export default ArticleModel
 
 export async function create () {
   await ArticleModel.create({

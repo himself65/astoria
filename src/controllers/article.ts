@@ -1,15 +1,11 @@
 import { BaseController, Context, del, get, json, post, prefix } from 'daruk'
 import { debug } from '../'
-import { ArticleModel } from '../models/article'
+import { ArticleModel } from '../models'
 import { UserPermission } from '../utils/shared'
-
-export const pageLimit = 5
 
 @prefix('/api')
 export default class Article extends BaseController {
-  public pageLimit = pageLimit
-
-  @post('/article')
+  @post('')
   async postArticle (ctx: Context) {
     const { content, title, _id } = ctx.request.body
     const { username } = ctx.user
@@ -46,7 +42,7 @@ export default class Article extends BaseController {
     }
   }
 
-  @get('/article')
+  @get('')
   @json()
   async getArticle (ctx: Context) {
     const { _id } = ctx.request.query
@@ -68,7 +64,7 @@ export default class Article extends BaseController {
     }
   }
 
-  @del('/article')
+  @del('')
   async deleteArticle (ctx) {
     const { _id } = ctx.request.query
     if (_id && ctx.user.level !== UserPermission.default) {
@@ -84,23 +80,5 @@ export default class Article extends BaseController {
     } else {
       ctx.response.status = 400
     }
-  }
-
-  @get('/articles')
-  async getArticles (ctx: Context) {
-    const { page = 0 } = ctx.request.query
-    const total = await ArticleModel.countDocuments({})
-    await ArticleModel.find()
-      .sort('-createdDate')
-      .skip(page * this.pageLimit)
-      .limit(this.pageLimit)
-      .lean(true)
-      .select('author title content createdDate')
-      .then(res => {
-        ctx.response.body = {
-          data: res,
-          total
-        }
-      })
   }
 }
