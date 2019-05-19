@@ -1,7 +1,7 @@
 import * as crypto from 'crypto-js'
 import { Document } from 'mongoose'
+import * as mongoose from 'mongoose'
 import { debug } from '../'
-import mongoose from '../utils/database'
 import { UserPermission } from '../utils/shared'
 
 const Schema = mongoose.Schema

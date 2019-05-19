@@ -6,7 +6,7 @@ const path = require('path')
 const debug = require('debug')('astoria')
 
 const astoria = new Astoria('astoria', {
-  rootPath: path.resolve(__dirname, './src'),
+  rootPath: path.resolve(__dirname),
   debug: process.env.NODE_ENV === 'dev'
 })
 

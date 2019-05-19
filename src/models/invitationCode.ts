@@ -1,4 +1,4 @@
-import mongoose from '../utils/database'
+import * as mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 

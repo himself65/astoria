@@ -1,19 +1,20 @@
+import { Daruk } from 'daruk'
 import * as mongoose from 'mongoose'
 import { debug } from '../'
-import { config } from '../config'
+const config = require('../config')
 
 const { port, database } = config.mongodb
 
 const dbUrl = `mongodb://localhost:${port}/${database}`
 
-export const connectDB = async () => {
+export default async function (daruk: Daruk) {
   debug(`mongoDB url: ${dbUrl}`)
   debug('Try to connect Mongoose.')
-  await mongoose.connect(dbUrl, {
+  const mongodb = await mongoose.connect(dbUrl, {
     useCreateIndex: true,
     useNewUrlParser: true
   })
-  const db = mongoose.connection
+  const db = mongodb.connection
   db.on('connected', () => {
     debug(`Mongoose connection open to ${dbUrl}.`)
   })
@@ -26,7 +27,3 @@ export const connectDB = async () => {
   })
   return db
 }
-
-export { mongoose }
-
-export default mongoose

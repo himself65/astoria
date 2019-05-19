@@ -1,7 +1,7 @@
 const resolve = require('path').resolve
 
 const isProd = process.env.NODE_ENV === 'production'
-const staticPath = resolve('../../../himself65', 'dist')
+const staticPath = resolve(__dirname, '../../../himself65', 'dist')
 
 module.exports = {
   appName: 'himself65',

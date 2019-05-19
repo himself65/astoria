@@ -8,7 +8,7 @@
   "main": "src/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "dev": "cross-env DEBUG=astoria NODE_ENV=development nodemon ./src/app.ts",
+    "dev": "cross-env DEBUG=astoria NODE_ENV=dev nodemon ./src/app.ts",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint-fix": "tslint --fix --project tsconfig.json",
     "start": "cross-env pm2 install typescript && pm2 start ecosystem.config.js --env production",
