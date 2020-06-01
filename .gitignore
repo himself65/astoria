@@ -1,7 +1,7 @@
-.idea
-coverage
-node_modules
-dist
-yarn-error.log
-*.private.*
-astoria/
+/.gradle
+/.idea
+/out
+/build
+*.iml
+*.ipr
+*.iws
